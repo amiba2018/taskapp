@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Question;
+// use DB;
 
 class HelloController extends Controller
 {
-    public function index(Request $request)
+
+    public function index()
     {
-       $items = DB::select('select * from people');
-       return view('hello.index', ['items' => $items]);
+        // Taskモデルを使ってデータを全て取得します。
+        $words = Question::all();
+        return view('questions.index', ['words' => $words]);
+    }
+    // 'first_word', '恋愛'
+    public function getData() 
+    {
+        return $this->words;
     }
 }
