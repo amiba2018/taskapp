@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/hello', 'HelloController@index');
-Route::get('/hello', 'HelloController@getData');
+// Route::get('/question', 'QuestionController@index');
+Route::get('/question', 'QuestionController@allAnswer');
+// Route::get('/show', 'QuestionController@show');
+// Route::get('/sass', function () {
+//     return view('sass');
+// });
+// Route::get('/hello', 'HelloController@getData');
 
 // Auth::routes();
 
