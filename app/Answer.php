@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    public function question()
-    {
-        return $this->belongsTo(Question::class, 'user_question_id');
-    }
+    // protected $fillable = ['question_id', 'answer'];
+
+    // public function question()
+    // {
+    //     return $this->belongsTo(Question::class);
+    // }
 }

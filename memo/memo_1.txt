@@ -13,7 +13,6 @@
 //task migrationにてanswersテーブルを作成
     // migrationにてanswersテーブルを削除(ロールバック)
     // migrationにてanswersテーブルを改めて作成(php artisan migrate)
-//task Sassの設定（連携はしていない）
 //task answersテーブルに値を追加
 //task 1対多のテーブルリレーションの設定
     //テーブルとモデルのマッピング
@@ -21,6 +20,14 @@
 //task リレーション元の"モデル"名_idを定義
     //モデル名はQustionなので,question_idではないので
       両方のメソッド内に指定のカラム名のキーを定義
+//task 問題画面の作成 inputタグの追加
+//task ファイル名、コントローラのメソッド名をわかりやすく変更
+//task Sassの設定
+//task Sassの接続(menuメソッドだけ)
+//task menu画面の作成
+//task cssでのbottunタグの追加
+//task menu画面の文字列を画面中央に
+//task データを取得して別ファイルに渡す
 
 
 

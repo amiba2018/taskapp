@@ -3,23 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QuestionApp</title>
+    <title>AnswersApp</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <form action="" method="post">
-                @csrf
-                <h1>お題</h1><a href="/" class="button">一覧に戻る</a>
-                @php
-                var_dump($all_answers);
-                @endphp
-         
-                <p>
-                    <input type="submit" value="お気に入り登録">
-                    <input type="submit" value="スキップ">
-                    <input type="submit" value="模範解答">
-                </p>
-                
-    </form>
+    <ul>
+    @foreach($question_words as $question_word)
+    <li>{{ $question_word->first_word }}</li>
+    <li>{{ $question_word->second_word }}</li>
+  @foreach($question_word->answers as $answer)
+    <li>{{ $answer->answer }}</li>
+  @endforeach
+  @endforeach
+    </ul>
 </body>
 </html>

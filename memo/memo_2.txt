@@ -1,0 +1,34 @@
+---以下メンタリング追加---
+//task laravel デバック用関数dd() = var_dump();exit;
+    $test
+    コントローラではdd($test);
+    @php dd($test); @endphp
+//task php artisan migrate:reset
+       php artisan migrate
+       にてカラム名とテーブル名を変更、値を追加、それに付随したquestionモデルとanswerモデルの記述を変更、削除
+//task データを取得し、指定のurlでそのデータを表示させた(answers.blade→question.blade, createコントローラ→allAnswer)
+//task count関数でidの関数を使ってmt_rand使用時に範囲を指定して、数が増減しても対応できるようにした
+//task 答え画面に次の画面へのリンクを設定
+//task ファイル名とメソッド名をわかりやすく変更
+//task データベースに値の追加を実装で青本とkimublog参照中
+//task データベースにquestionsテーブルの値のみ追加できた（青本）、answerは未登録
+//task データベースにquestionsテーブルの値のみ追加できた（kimublog）
+2/11
+//task データベースにanswerテーブルの値のみと初期値設定をして追加できた
+//task answerテーブルとquesitonテーブルの両方から同時にデータを追加
+2/12
+//task 問題作成時にmax関数を使ってquestion_idを設定
+2/13
+//task 編集画面のblade.phpを作成
+//task cssに着手textarea要素のコーディング
+//task 更新機能quesiton側のみ追加
+//task ファイル名やメソッド名の名前変更
+//task リロードしても問題が変わらないように$rand_idをボタンのリンクに埋め込む
+//task 問題画面と答え画面に次の問題のリンク作成
+//task コントローラ名を変更
+//task css 謎
+2/14
+//task 一覧画面表示
+//task first_wordとsecond_wordをコントローラ上で取得
+//task create.bladeで二つの単語と3つの答えを同時にできるように実装
+//task first_wordとsecond_wordを二つ画面上に表示

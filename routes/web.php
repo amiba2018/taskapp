@@ -10,10 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'auth'], function () {
+Route::get('/', 'QuestionsController@index');
+Route::get('/menu', 'QuestionsController@menu');
+Route::get('/questions/{id}', 'QuestionsController@show');
+Route::post('/questions/{id}/answer', 'QuestionsController@answer');
 
-// Route::get('/question', 'QuestionController@index');
-Route::get('/question', 'QuestionController@allAnswer');
-// Route::get('/show', 'QuestionController@show');
+
+Route::get('/create', 'QuestionsController@create');
+Route::post('/create', 'QuestionsController@store');
+});
+
+Route::get('/edit/{id}', 'QuestionsController@editQuestion')->where('id', '[0-9]+');
+Route::put('/edit/{id}', 'QuestionsController@updateQuestion')->where('id', '[0-9]+');
+
 // Route::get('/sass', function () {
 //     return view('sass');
 // });
@@ -22,3 +32,6 @@ Route::get('/question', 'QuestionController@allAnswer');
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,0 +1,95 @@
+    public function allAnswer(Request $moji)
+    {
+        $data1 = $moji::all();
+        $question = Question::find(1);
+        $answers = $question->answers;
+        return view('questions.question', compact('data1'),['question' => $question, 'answers' => $answers]);
+    }
+    
+        @foreach($answers as $answer)
+        <p>{{ $answer->answer}}</p>
+        <h1>{{ $answer->question->first_word }}</h1>
+        @endforeach
+        
+        with関数の使い方
+                public function allAnswer()
+    {
+        $all_answers = Question::with('answers:user_question_id,answer')->find(2);
+        return view('questions.question', ['all_answers' => $all_answers]);
+
+    }
+
+    <form action="/edit/{{ $question->id }}"  method="post">
+    @csrf
+    @method('PUT')
+        <h1>お題</h1><a href="{{url('/menu')}}" class="button">一覧に戻る</a>
+        <p><input type="text" name="first_word" value="{{ $question->first_word }}">とは<input type="text" name="second_word" value="{{ $question->second_word }}">である</p>
+        @foreach($answers as $answer)
+        <p>答え：<textarea name="answer{{ $loop->iteration }}" cols="20" rows="10">{{ $answer->answer }}</textarea></p>
+        @endforeach
+        @if (count($answers) === 1)
+        <p>答え：<textarea name="answer4" cols="20" rows="10"></textarea></p>
+        <p>答え：<textarea name="answer5" cols="20" rows="10"></textarea></p>
+        @elseif (count($answers) === 2)
+        <p>答え：<textarea name="answer4" cols="20" rows="10"></textarea></p>
+        @endif    
+        <p>
+            <button type=""  class="submit-button">お気に入り登録</button>
+            <button type="button" class="submit-button" onclick="location.href='{{url('/question')}}'" >次の問題へ</button>
+            <button type="submit" class="submit-button">更新</button>
+        </p>
+    </form>
+
+    name="first_word"
+    name="second_word"
+
+    $second_words = Question::get(['second_word']);
+
+        public function updateQuestion(Request $request, int $id)
+    {
+        $question = Question::findOrFail($id);
+        $question->first_word = $request->first_word;
+        $question->second_word = $request->second_word;
+        $question->update();
+
+        $answers = Answer::where('question_id', $id)->get();
+        $answer_keys = $answers->modelKeys();
+
+        for($i = 0; $i < count($answer_keys); $i++) {
+            $answer = Answer::findOrFail($answer_keys[$i]);
+            if($i === 0) {
+                $answer->answer = $request->answer1;
+            }
+            if($i === 1) {
+                $answer->answer = $request->answer2;
+            }
+            if($i === 2) {
+                $answer->answer = $request->answer3;
+            }
+            $answer->update();
+        }
+
+        // $answers3 = new Answer;
+        // // dd($request->answer4);
+        // $answers3->answer = $request->answer4;
+        // $answers3->question_id = $question->id;
+        // $answers3->save();
+
+        // $answers4 = new Answer;
+        // $answers4->answer = $request->answer5;
+        // $answers4->question_id = $question->id;
+        // $answers4->save();
+
+
+
+        // $answer = Answer::findOrFail($answer_keys[1]);
+        // $answer->answer = $request->answer2;
+        // $answer->update();
+
+        // $answer = Answer::findOrFail($answer_keys[2]);
+        // $answer->answer = $request->answer3;
+        // $answer->update();
+        return redirect('/edit/' . $question->id);
+    }
+
+         

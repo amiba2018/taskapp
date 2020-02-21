@@ -13,12 +13,12 @@ class AnswerTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) 
+        {
             $table->bigIncrements('id');
-            $table->integer('user_question_id');
             $table->text('answer');
             $table->timestamps();
-    });
+        });
     }
 
     /**

@@ -1,0 +1,37 @@
+---以下メンタリング追加---
+2/15
+//task select関数にて、カラムごとの値を取得で一覧画面を部分的に作った
+//task answerメソッドの引数名をanswersに変更、代入時にuser_answersに変更
+2/16
+//task 答え一つと問題一つ更新できるように実装
+//task ループ内での$loop変数を使用
+//task 更新画面で問題のワード2つと答え三つを同時登録
+2/17
+//task バリデーションのコントローラ作成
+//task バリデーションコメント表示
+2/18
+//task ログイン機能の作成、midllewearを使ってコンストラクトでQuestionコントローラにログインしていない場合はログインページにリダイヤル
+//task middlewearで個別にログイン必須画面を設定
+//task user_idをマイグレーションのquestions_tableに追加
+//task SQLSTATE[HY000]: General error: 1 table "questions" already exists
+    マイグレーションの記述でdrop関数の記述が違うテーブル名になっていて削除されずに、残っていたため
+2/19
+//task スペルミスでErrorExceptionCreating default object from empty valueのエラー
+//task 一覧画面（index）でログインユーザーの答えを取得
+//task リレーション 使う場合はidを含める 
+    (ex
+    $question_words = Question::select('id', 'first_word','second_word')->get();
+//task for文をtextareaで適用中
+//task for文をtextareaで適用完了
+//task editでの更新ok→追加機能もつける
+2/20
+//task 追加機能編集未確認→答えが2つまた1つだけの値をテーブルに入れる
+//task 値を入れたので、editでチェックする
+//task editでの答えが二つ以下の時に対してのemptyを設定し、表示させた。
+//task バリデーションでname指定で記述できることを理解
+//task ランダムな数字をコレクション用のrandom()を使って取得
+2/21
+//task 抽象化ゲームを大喜利風のゲームに変更
+    //task tableのカラム変更 first_word second_word をquestionに変更
+    //task 外部キーの削除 それに伴うファイルの変更
+//task createメソッド、bladeのファイル名変更
