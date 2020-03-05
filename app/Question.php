@@ -17,10 +17,10 @@ class Question extends Model
     //         'second_word' => 'required',        
     // );
 
-    // public function answers()
-    // {
-    //     return $this->hasMany(Answer::class);
-    // }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 
     // public function getData() 
     // {

@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <ul>
+@csrf
     @foreach($question_words as $question_word)
-    <li>{{ $question_word->first_word }}</li>
-    <li>{{ $question_word->second_word }}</li>
-  @foreach($question_word->answers as $answer)
-    <li>{{ $answer->answer }}</li>
-  @endforeach
-  @endforeach
-    </ul>
+    <div id="flexbox">
+    <div class="box-item1"><input type="checkbox" name="question[]" value="{{ $question_word->id }}"><label>{{ $question_word->first_word }}とは{{ $question_word->second_word }}である</label></div>
+
+    <div class="box-item"><button type="submit"  class="button">削除する</button></div>
+    <div class="box-item"><button type="button"  class="button" onclick="location.href='/create'">編集する</button></div>
+    </div>
+    @foreach($question_word->answers as $answer)
+    <p>{{ $answer->first_answer }}</p>
+    @endforeach
+    @endforeach
 </body>
 </html>

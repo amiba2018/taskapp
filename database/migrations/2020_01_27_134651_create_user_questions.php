@@ -16,7 +16,8 @@ class CreateUserQuestions extends Migration
         Schema::create('questions', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->integer('user_id');
-                $table->string('question');
+                $table->string('first_word');
+                $table->string('second_word');
                 $table->timestamps();
         });
     }

@@ -4,31 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CreateQuestion</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleA.css') }}">
 </head>
 <body>
 <form action="" method="post">
     @csrf
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        <h1>作成画面</h1><a href="/menu" class="button">一覧に戻る</a>
-        <p><input type="text" name="first_word" >とは<input type="text" name="second_word">である</p>
-        <p>答え1：<textarea name="answer1" cols="50" rows="10"></textarea></p>
-        <p>答え2：<textarea name="answer2" cols="50" rows="10"></textarea></p>
-        
-<p>答え3：<textarea name="answer3" cols="50" rows="10"></textarea></p>
+            <h1>作成画面</h1>
+        <p class="test"><input type="text" name="first_word" value="{{ old('first_word') }}" >とは<input type="text" name="second_word" value="{{ old('second_word') }}">である</p>
+            @error('first_word')
+            <p>{{ $message }}</p>
+            @enderror
+            @error('second_word')
+            <p>{{ $message }}</p>
+            @enderror
+        <div class="flexbox">
+            <div>答え1：</div><div><textarea name="answer1" cols="50" rows="10">{{ old('answer1') }}</textarea></div>
+            @error('answer1')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flexbox">
+            <div>答え2：</div><div><textarea name="answer2" cols="50" rows="10">{{ old('answer2') }}</textarea></div>
+            @error('answer2')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flexbox">
+            <div>答え3：</div><div><textarea name="answer3" cols="50" rows="10">{{ old('answer3') }}</textarea></div>
+            @error('answer3')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="footer">
         <p>
-            <button type="submit"  class="submit-button">登録</button>
-            <button type="button" class="submit-button" onclick="location.href='/question'" ></button>
-            <button type="" class="submit-button"></button>
+            <button type="submit"  class="btn1">登録</button>
+            <button type="button" class="btn2" onclick="location.href='/question'" >戻る</button>
         </p>
+        <div>
     </form>
 </body>
 </html>

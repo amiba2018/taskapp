@@ -24,7 +24,7 @@ class QuestionsController extends Controller
         $user_info = Auth::user();
         
         $question_words = $user_info->questions;
-        dd($question_words);
+        // dd($question_words);
         // $question_words = Question::select('id', 'first_word','second_word')->get();
         return view('questions.index', ['question_words' => $question_words]);
     }
@@ -60,11 +60,15 @@ class QuestionsController extends Controller
     {
         $question = new Question;
         $question->user_id = Auth::id();
-        $question->question = $request->question;
+        $question->first_word = $request->first_word;
+        $question->second_word = $request->second_word;
         $question->save();
 
         $answer = new Answer;
-        $answer->answer = $request->answer;
+        $answer->question_id = $question->id;
+        $answer->first_answer = $request->answer1;
+        $answer->second_answer = $request->answer2;
+        $answer->third_answer = $request->answer3;
         $answer->save();
         return redirect('/create');
     }

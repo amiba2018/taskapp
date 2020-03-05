@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+body {
+    width: 100vw;
+}
+*{
+    box-sizing: border-box;
+  }
+
 html{
     font-size: 62.5%;
 }
@@ -10,7 +17,7 @@ body{
     text-align: center;
 }
 
-.question-form {
+/* .question-form {
     width: 40%;
     margin: 50px auto 0;
    
@@ -30,12 +37,7 @@ a, a:hover {
     margin-right:auto; margin-left:auto
 }
 
-body {
-    width: 100vw;
-}
-*{
-    box-sizing: border-box;
-  }
+
  #flexbox{
    display:flex;
    background:#ddd;
@@ -56,9 +58,31 @@ body {
    text-align: center;
    padding:15px 40px;
    border:5px solid #ddd;
- }
+ } */
 
+ input{
+   background: yellow;
+   font-size:0.7em;
+  }
+
+ .test {
+   background: red;
+  padding:15px 40px;
+   font-size: 20px;
+ }
  .flexbox {
+   background: green;
     display:flex;
     justify-content: center;
  }
+
+ .btn1 {
+  display: block;
+  margin: auto 0;
+}
+
+.footer {
+  background: red;
+  width: 500px;
+}
+

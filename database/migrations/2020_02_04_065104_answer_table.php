@@ -16,7 +16,10 @@ class AnswerTable extends Migration
         Schema::create('answers', function (Blueprint $table) 
         {
             $table->bigIncrements('id');
-            $table->text('answer');
+            $table->integer('question_id');
+            $table->text('first_answer');
+            $table->text('second_answer')->nullable();
+            $table->text('third_answer')->nullable();
             $table->timestamps();
         });
     }
