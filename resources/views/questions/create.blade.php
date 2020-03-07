@@ -9,7 +9,7 @@
 <body>
 <form action="" method="post">
     @csrf
-            <h1>作成画面</h1>
+            <div class="wrap"><h1>作成画面</h1>
         <p class="test"><input type="text" name="first_word" value="{{ old('first_word') }}" >とは<input type="text" name="second_word" value="{{ old('second_word') }}">である</p>
             @error('first_word')
             <p>{{ $message }}</p>
@@ -42,5 +42,6 @@
         </p>
         <div>
     </form>
+    </div>
 </body>
 </html>

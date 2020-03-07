@@ -2,6 +2,7 @@
 
 body {
     width: 100vw;
+    /* margin:0 auto; */
 }
 *{
     box-sizing: border-box;
@@ -15,6 +16,12 @@ body{
     color: blue;
     font-size: 1.6rem;
     text-align: center;
+}
+
+h1 {
+  background: #867;
+  /* width: 500px; */
+  /* margin:0 auto; */
 }
 
 /* .question-form {
@@ -60,6 +67,10 @@ a, a:hover {
    border:5px solid #ddd;
  } */
 
+ .wrap {
+  width: 500px;
+  margin:0 auto;
+ }
  input{
    background: yellow;
    font-size:0.7em;
@@ -69,20 +80,30 @@ a, a:hover {
    background: red;
   padding:15px 40px;
    font-size: 20px;
+   /* width: 500px; */
+   /* margin:0 auto; */
  }
  .flexbox {
    background: green;
     display:flex;
     justify-content: center;
+    /* width: 500px; */
+    /* margin:0 auto; */
  }
 
  .btn1 {
   display: block;
-  margin: auto 0;
+  margin: 0 0 0 30px;
+}
+ .btn2 {
+  display: block;
+  margin: 0 50px 0 auto;
 }
 
 .footer {
   background: red;
-  width: 500px;
+  width: 300px;
+  margin: 0 auto;
+  /* padding: 0.3rem 0.1rem; */
 }
 
