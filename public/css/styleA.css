@@ -2,9 +2,9 @@
 
 body {
     width: 100vw;
-    /* margin:0 auto; */
 }
-*{
+
+* {
     box-sizing: border-box;
   }
 
@@ -20,59 +20,14 @@ body{
 
 h1 {
   background: #867;
-  /* width: 500px; */
-  /* margin:0 auto; */
 }
 
-/* .question-form {
-    width: 40%;
-    margin: 50px auto 0;
-   
-}
-
-.question-form textarea {
-    display: block;
-    margin-bottom: 10px;
-    padding: 15px;
-    width: 100%;
-    height: 150px;
-}
-
-a, a:hover {
-    text-decoration: none;
-    color: #000000;
-    margin-right:auto; margin-left:auto
-}
-
-
- #flexbox{
-   display:flex;
-   background:#ddd;
-   width: 100vw;
-   height: auto;
-   padding:10px;
- }
- .box-item1{
-    width: 700px;  
-   background:orange;
-   text-align: left;
-   padding:15px 40px;
-   border:5px solid #ddd;
- }
- 
- .box-item{
-   background:orange;
-   text-align: center;
-   padding:15px 40px;
-   border:5px solid #ddd;
- } */
 
  .wrap {
   width: 500px;
   margin:0 auto;
  }
  input{
-   background: yellow;
    font-size:0.7em;
   }
 
@@ -80,30 +35,44 @@ a, a:hover {
    background: red;
   padding:15px 40px;
    font-size: 20px;
-   /* width: 500px; */
-   /* margin:0 auto; */
  }
  .flexbox {
    background: green;
     display:flex;
     justify-content: center;
-    /* width: 500px; */
-    /* margin:0 auto; */
  }
 
+
+ .bottun {
+  height: 40px;
+  background: red;
+  text-align: left;
+ }
  .btn1 {
-  display: block;
-  margin: 0 0 0 30px;
-}
- .btn2 {
-  display: block;
-  margin: 0 50px 0 auto;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
 }
 
-.footer {
+.btn1:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+ .btn2 {
+  display: inline-block;
+}
+
+/* .footer {
   background: red;
+  height: 50px;
   width: 300px;
   margin: 0 auto;
-  /* padding: 0.3rem 0.1rem; */
-}
+} */
 

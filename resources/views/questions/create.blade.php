@@ -36,7 +36,7 @@
             @enderror
         </div>
         <div class="footer">
-        <p>
+        <p class="bottun">
             <button type="submit"  class="btn1">登録</button>
             <button type="button" class="btn2" onclick="location.href='/question'" >戻る</button>
         </p>
