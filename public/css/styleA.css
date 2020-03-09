@@ -13,7 +13,7 @@ html{
 }
 
 body{
-    color: blue;
+    /* color: blue; */
     font-size: 1.8rem;
     text-align: center;
 }
@@ -29,7 +29,7 @@ h1 {
  }
 
 .question {
-    background: red;
+    /* background: red; */
     padding:15px 40px;
     font-size: 20px;
  }
@@ -39,7 +39,7 @@ h1 {
  }
 
 .answer {
-    background: green;
+    /* background: green; */
     display:flex;
     justify-content: center;
  }
@@ -47,7 +47,7 @@ h1 {
 
 .bottun {
   height: 40px;
-  background: red;
+  /* background: red; */
   text-align: left;
  }
 
