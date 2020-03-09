@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-    width: 100vw;
+    width: 100vm;
 }
 
 * {
@@ -14,7 +14,7 @@ html{
 
 body{
     color: blue;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     text-align: center;
 }
 
@@ -23,33 +23,38 @@ h1 {
 }
 
 
- .wrap {
-  width: 500px;
+.title {
+  width: 600px;
   margin:0 auto;
  }
- input{
-   font-size:0.7em;
-  }
 
- .test {
-   background: red;
-  padding:15px 40px;
-   font-size: 20px;
+.question {
+    background: red;
+    padding:15px 40px;
+    font-size: 20px;
  }
- .flexbox {
-   background: green;
+
+ input {
+  font-size:0.9em;
+ }
+
+.answer {
+    background: green;
     display:flex;
     justify-content: center;
  }
 
 
- .bottun {
+.bottun {
   height: 40px;
   background: red;
   text-align: left;
  }
- .btn1 {
+
+.submit-btn {
   display: inline-block;
+  margin-left: 40px;
+  margin-top: 5px;
   padding: 0.5em 1em;
   text-decoration: none;
   background: #668ad8;/*ボタン色*/
@@ -58,21 +63,28 @@ h1 {
   border-radius: 3px;
 }
 
-.btn1:active {
+.submit-btn:active {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
 
- .btn2 {
+.nav-btn {
+  margin-left: 40px;
   display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #100209;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
 }
 
-/* .footer {
-  background: red;
-  height: 50px;
-  width: 300px;
-  margin: 0 auto;
-} */
+.nav-btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
 

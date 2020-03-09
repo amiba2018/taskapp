@@ -9,38 +9,36 @@
 <body>
 <form action="" method="post">
     @csrf
-            <div class="wrap"><h1>作成画面</h1>
-        <p class="test"><input type="text" name="first_word" value="{{ old('first_word') }}" >とは<input type="text" name="second_word" value="{{ old('second_word') }}">である</p>
+            <div class="title"><h1>作成画面</h1>
+        <p class="question"><input type="text" name="first_word" value="{{ old('first_word') }}" >とは<input type="text" name="second_word" value="{{ old('second_word') }}">である</p>
             @error('first_word')
             <p>{{ $message }}</p>
             @enderror
             @error('second_word')
             <p>{{ $message }}</p>
             @enderror
-        <div class="flexbox">
+        <div class="answer">
             <div>答え1：</div><div><textarea name="answer1" cols="50" rows="10">{{ old('answer1') }}</textarea></div>
             @error('answer1')
             <p>{{ $message }}</p>
             @enderror
         </div>
-        <div class="flexbox">
+        <div class="answer">
             <div>答え2：</div><div><textarea name="answer2" cols="50" rows="10">{{ old('answer2') }}</textarea></div>
             @error('answer2')
             <p>{{ $message }}</p>
             @enderror
         </div>
-        <div class="flexbox">
+        <div class="answer">
             <div>答え3：</div><div><textarea name="answer3" cols="50" rows="10">{{ old('answer3') }}</textarea></div>
             @error('answer3')
             <p>{{ $message }}</p>
             @enderror
         </div>
-        <div class="footer">
         <p class="bottun">
-            <button type="submit"  class="btn1">登録</button>
-            <button type="button" class="btn2" onclick="location.href='/question'" >戻る</button>
+            <button type="submit"  class="submit-btn">登録</button>
+            <button type="button" class="nav-btn" onclick="location.href='/question'" >戻る</button>
         </p>
-        <div>
     </form>
     </div>
 </body>
