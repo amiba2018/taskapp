@@ -1,57 +1,73 @@
 @charset "utf-8";
 
+html{
+  font-size: 62.5%; /* 1remで10px */
+}
+
 body {
-    width: 100vm;
+  width: 100vm;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
   }
 
-html{
-    font-size: 62.5%;
-}
-
 body{
-    /* color: blue; */
-    font-size: 1.8rem;
-    text-align: center;
+  font-size: 2rem;
+  color: blue;
+  text-align: center;
 }
-
-h1 {
-  background: #867;
-}
-
 
 .title {
   width: 600px;
   margin:0 auto;
+
+  position: relative;
+  /* margin: 2px 0;
+  padding: 0.5em 1em; */
+  border: solid 3px #95ccff;
+  border-radius: 8px;
  }
 
+ .title .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -10px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  color: #95ccff;
+  font-weight: bold;
+}
+
 .question {
-    /* background: red; */
+    background: red;
+    font-size: 2.6rem;
     padding:15px 40px;
-    font-size: 20px;
  }
 
  input {
-  font-size:0.9em;
+  font-size:2rem;
  }
 
 .answer {
-    /* background: green; */
-    display:flex;
-    justify-content: center;
+    background: green;
  }
 
+ textarea {
+  font-size: 1.6rem;
+ }
 
-.bottun {
-  height: 40px;
-  /* background: red; */
+.btn {
+  background: red;
+  height: 50px;
   text-align: left;
  }
 
 .submit-btn {
+  font-size: 1.4rem;
   display: inline-block;
   margin-left: 40px;
   margin-top: 5px;
@@ -61,11 +77,11 @@ h1 {
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .submit-btn:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
+  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
@@ -79,11 +95,11 @@ h1 {
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .nav-btn:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
+  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
