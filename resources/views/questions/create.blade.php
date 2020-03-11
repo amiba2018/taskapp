@@ -9,8 +9,10 @@
 <body>
 <form action="" method="post">
     @csrf
-            <div class="title"><h1>作成画面</h1>
-        <p class="question"><input type="text" name="first_word" value="{{ old('first_word') }}" >とは<input type="text" name="second_word" value="{{ old('second_word') }}">である</p>
+    <div class="title">
+    <span class="box-title">作成</span>
+        <p class="question"><input type="text" name="first_word" placeholder="キーワード" value="{{ old('first_word') }}" >とは
+        <input type="text" name="second_word" placeholder="キーワード" value="{{ old('second_word') }}"></p>
             @error('first_word')
             <p>{{ $message }}</p>
             @enderror
@@ -18,28 +20,24 @@
             <p>{{ $message }}</p>
             @enderror
         <div class="answer">
-            <div>答え1：</div><div><textarea name="answer1" cols="50" rows="10">{{ old('answer1') }}</textarea></div>
+            <p><textarea name="answer1" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer1') }}</textarea></p>
             @error('answer1')
             <p>{{ $message }}</p>
             @enderror
-        </div>
-        <div class="answer">
-            <div>答え2：</div><div><textarea name="answer2" cols="50" rows="10">{{ old('answer2') }}</textarea></div>
+            <p><textarea name="answer2" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer2') }}</textarea></p>
             @error('answer2')
             <p>{{ $message }}</p>
             @enderror
-        </div>
-        <div class="answer">
-            <div>答え3：</div><div><textarea name="answer3" cols="50" rows="10">{{ old('answer3') }}</textarea></div>
+            <p><textarea name="answer3" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer3') }}</textarea></p>
             @error('answer3')
             <p>{{ $message }}</p>
             @enderror
         </div>
-        <p class="bottun">
-            <button type="submit"  class="submit-btn">登録</button>
+        <p class="btn">
+            <button type="submit"  class="submit-btn">作成</button>
             <button type="button" class="nav-btn" onclick="location.href='/question'" >戻る</button>
         </p>
-    </form>
     </div>
+    </form>
 </body>
 </html>
