@@ -20,16 +20,18 @@
             <p>{{ $message }}</p>
             @enderror
         <div class="answer">
-            <div><textarea name="answer1" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer1') }}</textarea></div>
+            <div class="answer_1"><textarea name="answer1" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer1') }}</textarea>
             @error('answer1')
             <p>{{ $message }}</p>
             @enderror
-            <div><textarea name="answer2" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer2') }}</textarea></div>
+            </div>
+            <div class="answer_2"><textarea name="answer2" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer2') }}</textarea>
             @error('answer2')
             <p>{{ $message }}</p>
             @enderror
-            <div>
-            <textarea name="answer3" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer3') }}</textarea>
+            </div>
+            <div class="answer_3">
+            <textarea name="answer3" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer3') }}</textarea>
             @error('answer3')
             <p>{{ $message }}</p>
             @enderror
@@ -37,7 +39,7 @@
         </div>
         <div class="btn">
             <button type="submit"  class="submit-btn">作成</button>
-            <button type="button" class="nav-btn" onclick="location.href='/question'" >戻る</button>
+            <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
         </div>
     </div>
     </form>
