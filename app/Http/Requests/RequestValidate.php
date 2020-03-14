@@ -26,9 +26,9 @@ class RequestValidate extends FormRequest
         return [
             "first_word" => "required|max:20",
             "second_word" => "required|max:20",
-            "answer1" => "required|max:20",
-            "answer2" => "nullable|max:20",
-            "answer3" => "nullable|max:20",
+            "first_answer" => "required|max:40",
+            "second_answer" => "nullable|max:40",
+            "third_answer" => "nullable|max:40",
         ];
     }
 
@@ -39,10 +39,10 @@ class RequestValidate extends FormRequest
             "first_word.max" => "20文字以下で入力してくだい",
             "second_word.required" => "必須項目です",
             "second_word.max" => "20文字以下で入力してくだい",
-            "answer1.required" => "必須項目です",
-            "answer1.max" => "20文字以下で入力してくだい",
-            "answer2.max" => "20文字以下で入力してくだい",
-            "answer3.max" => "20文字以下で入力してくだい",
+            "first_answer.required" => "必須項目です",
+            "first_answer.max" => "40文字以下で入力してくだい",
+            "second_answer.max" => "40文字以下で入力してくだい",
+            "third_answer.max" => "40文字以下で入力してくだい",
         ];
     } 
 }

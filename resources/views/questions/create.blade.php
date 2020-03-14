@@ -19,22 +19,24 @@
             @error('second_word')
             <p>{{ $message }}</p>
             @enderror
-        <div class="answer">
-            <div class="answer_1"><textarea name="answer1" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer1') }}</textarea>
-            @error('answer1')
-            <p>{{ $message }}</p>
-            @enderror
+        <div class="answers">
+            <div class="first_answer">
+                <textarea name="first_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('first_answer') }}</textarea>
+                @error('first_answer')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
-            <div class="answer_2"><textarea name="answer2" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer2') }}</textarea>
-            @error('answer2')
-            <p>{{ $message }}</p>
-            @enderror
+            <div class="second_answer">
+                <textarea name="second_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('second_answer') }}</textarea>
+                @error('second_answer')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
-            <div class="answer_3">
-            <textarea name="answer3" placeholder="答えを入力してください" cols="63" rows="3">{{ old('answer3') }}</textarea>
-            @error('answer3')
-            <p>{{ $message }}</p>
-            @enderror
+            <div class="third_answer">
+                <textarea name="third_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('third_answer') }}</textarea>
+                @error('third_answer')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
         </div>
         <div class="btn">
