@@ -4,25 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AnswersApp</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleA.css') }}">
 </head>
 <body>
 <form action="" method="">
     @csrf
-        <h1>お題</h1><a href="/menu" class="button">一覧に戻る</a>
-        <p>{{ $question->first_word }}とは{{ $question->second_word }}である</p>
-        <p>答え：<textarea name="" cols="50" rows="10">{{$user_answers['answers']}}</textarea></p>
-        <p><textarea name="" cols="50" rows="10">
-            @foreach($answers as $answer)
-            {{ $answer->answer}}
-            @endforeach
-        </textarea>
-        </p>
-        <p>
-            <button type="submit"  class="submit-button">問題をお気に入り登録</button>
-            <button type="button" class="submit-button" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'" >次の問題へ</button>
-            <button type="submit" class="submit-button"></button>
-        </p>
+    <div class="title">
+    <span class="box-title">答え</span>
+        <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}である</h1></div>
+        <div class="answers">
+            <div class="first_answer">
+                <p class="subtitle">模範解答</p>
+                <textarea name="first_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</textarea>
+            </div>
+            <div class="second_answer">
+                <textarea name="second_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</textarea>
+            </div>
+            <div class="third_answer">
+                <textarea name="third_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</textarea>
+            </div>
+            <div class="first_answer">
+                <p class="subtitle">あなたの答え</p>
+                <textarea name="first_answer" cols="52" rows="2">{{ $user_answers['first_answer'] }}</textarea>
+            </div>
+            <div class="second_answer">
+                <textarea name="second_answer" cols="52" rows="2">{{ $user_answers['second_answer'] }}</textarea>
+            </div>
+            <div class="third_answer">
+                <textarea name="third_answer" cols="52" rows="2">{{ $user_answers['third_answer'] }}</textarea>
+            </div>
+        </div>
+        <div class="btn">
+            <button type="button" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'" class="button">次の問題へ</button>
+            <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
+        </div>
+    </div>
     </form>
 </body>
 </html>

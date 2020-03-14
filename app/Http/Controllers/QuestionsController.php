@@ -36,18 +36,18 @@ class QuestionsController extends Controller
 
     public function show($id)
     {
-
         $next_question_id = Question::get(['id'])->random(1);
         $question = Question::findOrFail($id);
         return view('questions.show',['question' => $question, 'next_question_id' => $next_question_id]);
     }
 
-    public function answer(Request $answers ,$id)
+    public function answer(Request $all_answers, $id)
     {
         $next_question_id = Question::get(['id'])->random(1);
-        $user_answers = $answers->all();//単数？
+        $user_answers = $all_answers->all();
         $question = Question::findOrFail($id);
         $answers = $question->answers;
+        // dd($answers);
         return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $next_question_id]);
     }
 

@@ -25,6 +25,10 @@ h1 {
   border-radius: 8px;
 }
 
+.subtitle {
+  font-size: 20px;
+}
+
 .box-title {
   position: absolute;
   display: inline-block;
@@ -94,12 +98,12 @@ textarea {
 }
 
 .nav-btn {
-  font-size: 15px;
+  font-size: 18px;
   margin-left: 40px;
   display: inline-block;
   padding: 5px 10px;
   text-decoration: none;
-  background: #5B5B5B;/*ボタン色*/
+  background: #5B5B5B;
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
