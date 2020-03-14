@@ -16,7 +16,6 @@ Route::get('/menu', 'QuestionsController@menu');
 Route::get('/questions/{id}', 'QuestionsController@show');
 Route::post('/questions/{id}/answer', 'QuestionsController@answer');
 
-
 Route::get('/create', 'QuestionsController@create');
 Route::post('/create', 'QuestionsController@store');
 });

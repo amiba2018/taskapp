@@ -55,7 +55,7 @@ class QuestionsController extends Controller
 	{
 	    return view('questions.create');
     }
-    // RequestValidate
+    
     public function store(RequestValidate $request)
     {
         $question = new Question;
@@ -66,9 +66,9 @@ class QuestionsController extends Controller
 
         $answer = new Answer;
         $answer->question_id = $question->id;
-        $answer->first_answer = $request->answer1;
-        $answer->second_answer = $request->answer2;
-        $answer->third_answer = $request->answer3;
+        $answer->first_answer = $request->first_answer;
+        $answer->second_answer = $request->second_answer;
+        $answer->third_answer = $request->third_answer;
         $answer->save();
         return redirect('/create');
     }

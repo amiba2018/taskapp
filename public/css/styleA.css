@@ -1,35 +1,31 @@
 @charset "utf-8";
 
-html{
-  font-size: 62.5%; /* 1remで10px */
-}
-
 body {
   width: 100vm;
+  font-size: 20px;
+  color: #5B5B5B;
+  text-align: center;
+  margin-top: 60px;
 }
 
 * {
   box-sizing: border-box;
-  }
+}
 
-body{
-  font-size: 2rem;
-  color: blue;
-  text-align: center;
+h1 {
+  font-size: 26px;
 }
 
 .title {
-  width: 600px;
+  background: #AAD6EC;
+  width: 650px;
   margin:0 auto;
-
   position: relative;
-  /* margin: 2px 0;
-  padding: 0.5em 1em; */
-  border: solid 3px #95ccff;
+  border: solid 3px #5B5B5B;
   border-radius: 8px;
- }
+}
 
- .title .box-title {
+.box-title {
   position: absolute;
   display: inline-block;
   top: -10px;
@@ -38,45 +34,56 @@ body{
   line-height: 1;
   font-size: 19px;
   background: #FFF;
-  color: #95ccff;
+  color: #5B5B5B;
   font-weight: bold;
 }
 
 .question {
-    background: red;
-    font-size: 2.6rem;
+    background: #EEF9FF;
     padding:15px 40px;
- }
+}
 
- input {
-  font-size:2rem;
- }
+input {
+  font-size: 23px;
+}
 
-.answer {
-    background: green;
- }
+.answers {
+    margin-top: 9px;
+}
 
- textarea {
-  font-size: 1.6rem;
- }
+.first_answer {
+  margin: 20px 20px;
+}
+.second_answer {
+  margin: 20px 20px;
+}
+.third_answer {
+  margin: 20px 20px;
+}
+
+textarea {
+  font-size: 23px;
+}
 
 .btn {
-  background: red;
-  height: 50px;
+  background: #EEF9FF;
+  height: 80px;
   text-align: left;
- }
+}
 
 .submit-btn {
-  font-size: 1.4rem;
+  position: relative;
+  font-size: 18px;
   display: inline-block;
   margin-left: 40px;
-  margin-top: 5px;
-  padding: 0.5em 1em;
+  margin-top: 20px;
+  padding:5px 10px;
   text-decoration: none;
-  background: #668ad8;/*ボタン色*/
+  background: #FC9D9D;/*ボタン色*/
   color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
+  border-bottom: solid 4px rgb(248, 118, 118);
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -87,11 +94,12 @@ body{
 }
 
 .nav-btn {
+  font-size: 15px;
   margin-left: 40px;
   display: inline-block;
-  padding: 0.5em 1em;
+  padding: 5px 10px;
   text-decoration: none;
-  background: #100209;/*ボタン色*/
+  background: #5B5B5B;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
@@ -103,4 +111,3 @@ body{
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
-

@@ -11,32 +11,38 @@
     @csrf
     <div class="title">
     <span class="box-title">作成</span>
-        <p class="question"><input type="text" name="first_word" placeholder="キーワード" value="{{ old('first_word') }}" >とは
-        <input type="text" name="second_word" placeholder="キーワード" value="{{ old('second_word') }}"></p>
+        <div class="question"><h1><input type="text" name="first_word" placeholder="キーワード" value="{{ old('first_word') }}" >とは
+        <input type="text" name="second_word" placeholder="キーワード" value="{{ old('second_word') }}"></h1></div>
             @error('first_word')
             <p>{{ $message }}</p>
             @enderror
             @error('second_word')
             <p>{{ $message }}</p>
             @enderror
-        <div class="answer">
-            <p><textarea name="answer1" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer1') }}</textarea></p>
-            @error('answer1')
-            <p>{{ $message }}</p>
-            @enderror
-            <p><textarea name="answer2" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer2') }}</textarea></p>
-            @error('answer2')
-            <p>{{ $message }}</p>
-            @enderror
-            <p><textarea name="answer3" placeholder="答えを入力してください" cols="63" rows="15">{{ old('answer3') }}</textarea></p>
-            @error('answer3')
-            <p>{{ $message }}</p>
-            @enderror
+        <div class="answers">
+            <div class="first_answer">
+                <textarea name="first_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('first_answer') }}</textarea>
+                @error('first_answer')
+                <p>{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="second_answer">
+                <textarea name="second_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('second_answer') }}</textarea>
+                @error('second_answer')
+                <p>{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="third_answer">
+                <textarea name="third_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ old('third_answer') }}</textarea>
+                @error('third_answer')
+                <p>{{ $message }}</p>
+                @enderror
+            </div>
         </div>
-        <p class="btn">
+        <div class="btn">
             <button type="submit"  class="submit-btn">作成</button>
-            <button type="button" class="nav-btn" onclick="location.href='/question'" >戻る</button>
-        </p>
+            <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
+        </div>
     </div>
     </form>
 </body>
