@@ -52,93 +52,44 @@ class QuestionsController extends Controller
 	{
 	    return view('questions.create');
     }
-    
 
+    public function store(RequestValidate $request)
+    {
+        $question = Question::create([
+            "user_id"  => Auth::id(),
+            "first_word"  => $request->first_word,
+            "second_word"  => $request->second_word,
+        ]);
+
+        Answer::create([
+            "question_id"  => $question->id,
+            "first_answer"  => $request->first_answer,
+            "second_answer"  => $request->second_answer,
+            "third_answer"  => $request->third_answer,
+        ]);
+        return redirect('/create');
+    }
 
     public function edit(int $id)
     {
         $question = Question::findOrFail($id);
         $answers = $question->answers;
-        // dd(array($answers));
-        // dd($answers->toArray());
-        $answers->toArray();
-        // dd($answers->toArray());
-        return view('questions.questionEdit',['question' => $question, 'answers' => $answers]);
+        return view('questions.edit',['question' => $question, 'answers' => $answers]);
     }
 
     public function update(Request $request, int $id)
     {
         $question = Question::findOrFail($id);
-        $question->first_word = $request->first_word;
-        $question->second_word = $request->second_word;
-        $question->update();
-
-        $answers = Answer::where('question_id', $id)->get();
-        $answer_keys = $answers->modelKeys();
-
-        for($i = 0; $i < count($answer_keys); $i++) {
-            $answer = Answer::findOrFail($answer_keys[$i]);
-            if($i === 0) {
-                $answer->answer = $request->answer0;
-            }
-            if($i === 1) {
-                $answer->answer = $request->answer1;
-            }
-            if($i === 2) {
-                $answer->answer = $request->answer2;
-            }
-            $answer->update();
-        }
-
-        // $add_answer1 = new Answer;
-        // $add_answer1->answer = $request->answer1;
-        // $add_answer1->question_id = $question->id;
-        // $add_answer1->save();
-
-        // $add_answer2 = new Answer;
-        // $add_answer2->answer = $request->answer2;
-        // $add_answer2->question_id = $question->id;
-        // $add_answer2->save();
-
-        // $answers4 = new Answer;
-        // $answers4->answer = $request->answer5;
-        // $answers4->question_id = $question->id;
-        // $answers4->save();
-
-
-
-        // $answer = Answer::findOrFail($answer_keys[1]);
-        // $answer->answer = $request->answer2;
-        // $answer->update();
-
-        // $answer = Answer::findOrFail($answer_keys[2]);
-        // $answer->answer = $request->answer3;
-        // $answer->update();
-        return redirect('/edit/' . $question->id);
+        $question->update([
+            "first_word" => $request->first_word,
+            "second_word" => $request->second_word,
+        ]);
+        $answers = $question->answers;
+        $answers[0]->update([
+            "first_answer" => $request->first_answer,
+            "second_answer" => $request->second_answer,
+            "third_answer" => $request->third_answer,
+        ]);
+        return redirect("/edit/{$id}");
     }
-
-    // public function store(Request $request)
-    // {
-    //     $this->validate($request, Question::$rules);
-    //     // $question = new Question;
-    //     // $form = $request->all();
-    //     // unset($form['_token']);
-    //     // $question->fill($form)->save();
-
-
-    //     $validate = $request->validate([
-    //         'first_word'    => 'required',
-    //         'second_word' => 'required',
-    //     ]);
-    //     // $validate2 = $request->validate([
-    //     //     'answers' => 'required',
-    //     // ]);
-    //     // データベースに登録
-    //     Question::create($validate);
-    //     // Answer::create($validate2);
-        
-    //     // 画面表示するURLにリダイレクト
-    //     return redirect('/create');
-    // }
-
 }

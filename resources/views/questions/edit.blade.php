@@ -12,11 +12,10 @@
     @method('PUT')
         <h1>お題</h1><a href="{{url('/menu')}}" class="button">一覧に戻る</a>
         <p><input type="text" name="first_word" value="{{ $question->first_word }}">とは<input type="text" name="second_word" value="{{ $question->second_word }}">である</p>
-    @for ($i = 0; $i < 3; $i++)
-        <p>答え：<textarea name="answer{{ $i }}" cols="20" rows="10">@if(!empty($answers[$i])){{ $answers[$i]["answer"] }}@endif</textarea></p>
-    @endfor
+        <p>答え：<textarea name="first_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</textarea></p>
+        <p>答え：<textarea name="second_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</textarea></p>
+        <p>答え：<textarea name="third_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</textarea></p>
         <p>
-            <button type=""  class="submit-button">お気に入り登録</button>
             <button type="button" class="submit-button" onclick="location.href='{{url('/question')}}'" >次の問題へ</button>
             <button type="submit" class="submit-button">更新</button>
         </p>
