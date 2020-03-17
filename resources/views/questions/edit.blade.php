@@ -1,24 +1,43 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AnswersApp</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layouts.header')
+@section('title', 'Edit')
+@section('content')
 <form action="/edit/{{ $question->id }}"  method="post">
-    @csrf
-    @method('PUT')
-        <h1>お題</h1><a href="{{url('/menu')}}" class="button">一覧に戻る</a>
-        <p><input type="text" name="first_word" value="{{ $question->first_word }}">とは<input type="text" name="second_word" value="{{ $question->second_word }}">である</p>
-        <p>答え：<textarea name="first_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</textarea></p>
-        <p>答え：<textarea name="second_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</textarea></p>
-        <p>答え：<textarea name="third_answer" cols="52" rows="2">@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</textarea></p>
-        <p>
-            <button type="button" class="submit-button" onclick="location.href='{{url('/question')}}'" >次の問題へ</button>
-            <button type="submit" class="submit-button">更新</button>
-        </p>
+        @csrf
+        @method('PUT')
+        <div class="title">
+        <span class="box-title">編集</span>
+            <div class="question"><h1><input type="text" name="first_word" placeholder="キーワード" value="{{ $question->first_word }}">とは
+            <input type="text" name="second_word" placeholder="キーワード" value="{{ $question->second_word }}"></h1></div>
+                @error('first_word')
+                <p>{{ $message }}</p>
+                @enderror
+                @error('second_word')
+                <p>{{ $message }}</p>
+                @enderror
+            <div class="answers">
+                <div class="first_answer">
+                    <textarea name="first_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</textarea>
+                    @error('first_answer')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="second_answer">
+                    <textarea name="second_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</textarea>
+                    @error('second_answer')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="third_answer">
+                    <textarea name="third_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</textarea>
+                    @error('third_answer')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="btn">
+                <button type="submit"  class="submit-btn">更新</button>
+                <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
+            </div>
+        </div>
     </form>
-</body>
-</html>
+@endsection

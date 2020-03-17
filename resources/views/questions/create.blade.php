@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Dashboard')
+@section('title', 'Create')
 @section('content')
     <form action="" method="post">
         @csrf
