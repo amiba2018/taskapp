@@ -20,8 +20,8 @@ Route::get('/create', 'QuestionsController@create');
 Route::post('/create', 'QuestionsController@store');
 });
 
-Route::get('/edit/{id}', 'QuestionsController@editQuestion')->where('id', '[0-9]+');
-Route::put('/edit/{id}', 'QuestionsController@updateQuestion')->where('id', '[0-9]+');
+Route::get('/edit/{id}', 'QuestionsController@edit')->where('id', '[0-9]+');
+Route::put('/edit/{id}', 'QuestionsController@update')->where('id', '[0-9]+');
 
 // Route::get('/sass', function () {
 //     return view('sass');

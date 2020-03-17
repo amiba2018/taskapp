@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AnswersApp</title>
-    <link rel="stylesheet" href="{{ asset('css/styleA.css') }}">
-</head>
-<body>
-<form action="" method="">
-    @csrf
+@extends('layouts.header')
+@section('title', 'Answer')
+@section('content')
     <div class="title">
     <span class="box-title">答え</span>
         <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}である</h1></div>
@@ -39,6 +31,4 @@
             <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
         </div>
     </div>
-    </form>
-</body>
-</html>
+@endsection

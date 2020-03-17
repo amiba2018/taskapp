@@ -7,9 +7,7 @@ use App\Question;
 use App\Answer;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-// use Auth;
 use App\Http\Requests\RequestValidate;
-// use DB;
 
 class QuestionsController extends Controller
 {
@@ -41,13 +39,12 @@ class QuestionsController extends Controller
         return view('questions.show',['question' => $question, 'next_question_id' => $next_question_id]);
     }
 
-    public function answer(Request $all_answers, $id)
+    public function answer(Request $request, $id)
     {
         $next_question_id = Question::get(['id'])->random(1);
-        $user_answers = $all_answers->all();
+        $user_answers = $request->all();
         $question = Question::findOrFail($id);
         $answers = $question->answers;
-        // dd($answers);
         return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $next_question_id]);
     }
 
@@ -56,25 +53,9 @@ class QuestionsController extends Controller
 	    return view('questions.create');
     }
     
-    public function store(RequestValidate $request)
-    {
-        $question = new Question;
-        $question->user_id = Auth::id();
-        $question->first_word = $request->first_word;
-        $question->second_word = $request->second_word;
-        $question->save();
-
-        $answer = new Answer;
-        $answer->question_id = $question->id;
-        $answer->first_answer = $request->first_answer;
-        $answer->second_answer = $request->second_answer;
-        $answer->third_answer = $request->third_answer;
-        $answer->save();
-        return redirect('/create');
-    }
 
 
-    public function editQuestion(int $id)
+    public function edit(int $id)
     {
         $question = Question::findOrFail($id);
         $answers = $question->answers;
@@ -85,7 +66,7 @@ class QuestionsController extends Controller
         return view('questions.questionEdit',['question' => $question, 'answers' => $answers]);
     }
 
-    public function updateQuestion(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $question = Question::findOrFail($id);
         $question->first_word = $request->first_word;
