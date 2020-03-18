@@ -5,7 +5,6 @@ body {
   font-size: 20px;
   color: #5B5B5B;
   text-align: center;
-  margin-top: 60px;
 }
 
 * {
@@ -19,7 +18,9 @@ h1 {
 .title {
   background: #AAD6EC;
   width: 650px;
-  margin:0 auto;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
   position: relative;
   border: solid 3px #5B5B5B;
   border-radius: 8px;

@@ -21,10 +21,17 @@ class QuestionsController extends Controller
     {
         $user_info = Auth::user();
         
-        $question_words = $user_info->questions;
-        // dd($question_words);
-        // $question_words = Question::select('id', 'first_word','second_word')->get();
-        return view('questions.index', ['question_words' => $question_words]);
+        $user_questions = $user_info->questions;
+        // dd($user_questions);
+        // $user_questions = Question::select('id', 'first_word','second_word')->get();
+        return view('questions.index', ['user_questions' => $user_questions]);
+    }
+
+    public function delete(int $Qid, int $Aid)
+    {
+        Question::destroy($Qid);
+        Answer::destroy($Aid);
+        return redirect('/');
     }
 
     public function menu()
@@ -32,11 +39,11 @@ class QuestionsController extends Controller
         return view('questions.menu');
     }
 
-    public function show($id)
+    public function question($id)
     {
         $next_question_id = Question::get(['id'])->random(1);
         $question = Question::findOrFail($id);
-        return view('questions.show',['question' => $question, 'next_question_id' => $next_question_id]);
+        return view('questions.question',['question' => $question, 'next_question_id' => $next_question_id]);
     }
 
     public function answer(Request $request, $id)

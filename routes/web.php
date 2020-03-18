@@ -12,8 +12,9 @@
 */
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/', 'QuestionsController@index');
+Route::delete('/{Qid}/{Aid}', 'QuestionsController@delete');
 Route::get('/menu', 'QuestionsController@menu');
-Route::get('/questions/{id}', 'QuestionsController@show');
+Route::get('/questions/{id}', 'QuestionsController@question');
 Route::post('/questions/{id}/answer', 'QuestionsController@answer');
 
 Route::get('/create', 'QuestionsController@create');
