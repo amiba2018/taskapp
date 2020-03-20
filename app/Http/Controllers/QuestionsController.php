@@ -19,12 +19,10 @@ class QuestionsController extends Controller
 
     public function index()
     {
+        $next_question_id = Question::get(['id'])->random(1);
         $user_info = Auth::user();
-        
         $user_questions = $user_info->questions;
-        // dd($user_questions);
-        // $user_questions = Question::select('id', 'first_word','second_word')->get();
-        return view('questions.index', ['user_questions' => $user_questions]);
+        return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $next_question_id]);
     }
 
     public function delete(int $Qid, int $Aid)
@@ -32,11 +30,6 @@ class QuestionsController extends Controller
         Question::destroy($Qid);
         Answer::destroy($Aid);
         return redirect('/');
-    }
-
-    public function menu()
-    {
-        return view('questions.menu');
     }
 
     public function question($id)
@@ -57,46 +50,27 @@ class QuestionsController extends Controller
 
     public function create()
 	{
-	    return view('questions.create');
+        $next_question_id = Question::get(['id'])->random(1);
+	    return view('questions.create',['next_question_id' => $next_question_id]);
     }
 
     public function store(RequestValidate $request)
     {
-        $question = Question::create([
-            "user_id"  => Auth::id(),
-            "first_word"  => $request->first_word,
-            "second_word"  => $request->second_word,
-        ]);
-
-        Answer::create([
-            "question_id"  => $question->id,
-            "first_answer"  => $request->first_answer,
-            "second_answer"  => $request->second_answer,
-            "third_answer"  => $request->third_answer,
-        ]);
+        Question::createQuestion($request);
         return redirect('/create');
     }
 
     public function edit(int $id)
     {
+        $next_question_id = Question::get(['id'])->random(1);
         $question = Question::findOrFail($id);
         $answers = $question->answers;
-        return view('questions.edit',['question' => $question, 'answers' => $answers]);
+        return view('questions.edit',['question' => $question, 'answers' => $answers, 'next_question_id' => $next_question_id]);
     }
 
     public function update(Request $request, int $id)
     {
-        $question = Question::findOrFail($id);
-        $question->update([
-            "first_word" => $request->first_word,
-            "second_word" => $request->second_word,
-        ]);
-        $answers = $question->answers;
-        $answers[0]->update([
-            "first_answer" => $request->first_answer,
-            "second_answer" => $request->second_answer,
-            "third_answer" => $request->third_answer,
-        ]);
+        Question::updateQuestion($request, $id);
         return redirect("/edit/{$id}");
     }
 }
