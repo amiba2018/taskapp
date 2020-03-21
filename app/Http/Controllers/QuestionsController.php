@@ -8,6 +8,7 @@ use App\Answer;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestValidate;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class QuestionsController extends Controller
 {
@@ -17,11 +18,18 @@ class QuestionsController extends Controller
         // $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $next_question_id = Question::get(['id'])->random(1);
         $user_info = Auth::user();
-        $user_questions = $user_info->questions->reverse()->values()->forPage(1, 3);
+        $user_questions = $user_info->questions->reverse()->values();
+        $user_questions = new LengthAwarePaginator(
+            $user_questions->forPage($request->page,3),
+            count($user_questions),
+            3,
+            $request->page,
+            array('path' => $request->url())
+        );
         return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $next_question_id]);
     }
 

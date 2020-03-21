@@ -28,4 +28,8 @@
     </div>
     @endforeach
     @endforeach
+    <div class="d-flex justify-content-center">
+    {{ $user_questions->links() }}
+    </div>
+    
 @endsection
