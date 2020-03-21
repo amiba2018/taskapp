@@ -35,7 +35,6 @@
             </div>
             <div class="btn">
                 <button type="submit"  class="submit-btn">作成</button>
-                <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
             </div>
         </div>
     </form>

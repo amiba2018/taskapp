@@ -21,7 +21,7 @@ class QuestionsController extends Controller
     {
         $next_question_id = Question::get(['id'])->random(1);
         $user_info = Auth::user();
-        $user_questions = $user_info->questions;
+        $user_questions = $user_info->questions->reverse()->values()->forPage(1, 3);
         return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $next_question_id]);
     }
 

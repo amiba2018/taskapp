@@ -11,6 +11,10 @@ li {
 	float: left;
 	border-right: 1px solid #bbbbbb;
 }
+
+.login {
+  float: right;
+}
 li:last-child {
 	border-right: none;
 }
@@ -141,7 +145,7 @@ textarea {
 }
 
 .nav-btn:active {
-  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
-  transform: translateY(4px);/*下に動く*/
+-webkit-transform: translateY(4px);/*ボタンを押したとき*/
+transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
