@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 ul {
+  text-align: center;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -8,7 +9,7 @@ ul {
 	background-color: #AAD6EC;
 }
 li {
-	float: left;
+  display: inline-block;
 	border-right: 1px solid #bbbbbb;
 }
 
@@ -21,7 +22,6 @@ li:last-child {
 li a {
 	display: block;
 	color: #FFF;
-	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 }
@@ -33,6 +33,18 @@ li a:hover:not(.active) {
 	background-color: #88bcd6;
 }
 
+.current a {
+      color: #f00;
+}
+  
+
+.page-link {
+  display: block;
+	color: #FFF;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
 body {
   width: 100vm;
   font-size: 20px;
@@ -149,3 +161,11 @@ textarea {
 transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
+
+.pagination {
+  text-align: center;
+}
+
+/* .page-item {
+  
+} */
