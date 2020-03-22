@@ -12,15 +12,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class QuestionsController extends Controller
 {
+    public $next_question_id;
 
-    public function __construct()
+    public function __construct() 
     {
-        // $this->middleware('auth');
+        $this->next_question_id = Question::get(['id'])->random(1);
     }
 
     public function index(Request $request)
     {
-        $next_question_id = Question::get(['id'])->random(1);
         $user_info = Auth::user();
         $user_questions = $user_info->questions->reverse()->values();
         $user_questions = new LengthAwarePaginator(
@@ -30,7 +30,7 @@ class QuestionsController extends Controller
             $request->page,
             array('path' => $request->url())
         );
-        return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $next_question_id]);
+        return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
     }
 
     public function delete(int $Qid, int $Aid)
@@ -42,24 +42,21 @@ class QuestionsController extends Controller
 
     public function question($id)
     {
-        $next_question_id = Question::get(['id'])->random(1);
         $question = Question::findOrFail($id);
-        return view('questions.question',['question' => $question, 'next_question_id' => $next_question_id]);
+        return view('questions.question',['question' => $question, 'next_question_id' => $this->next_question_id]);
     }
 
     public function answer(Request $request, $id)
     {
-        $next_question_id = Question::get(['id'])->random(1);
         $user_answers = $request->all();
         $question = Question::findOrFail($id);
         $answers = $question->answers;
-        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $next_question_id]);
+        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id]);
     }
 
     public function create()
 	{
-        $next_question_id = Question::get(['id'])->random(1);
-	    return view('questions.create',['next_question_id' => $next_question_id]);
+	    return view('questions.create',['next_question_id' => $this->next_question_id]);
     }
 
     public function store(RequestValidate $request)
@@ -70,10 +67,9 @@ class QuestionsController extends Controller
 
     public function edit(int $id)
     {
-        $next_question_id = Question::get(['id'])->random(1);
         $question = Question::findOrFail($id);
         $answers = $question->answers;
-        return view('questions.edit',['question' => $question, 'answers' => $answers, 'next_question_id' => $next_question_id]);
+        return view('questions.edit',['question' => $question, 'answers' => $answers, 'next_question_id' => $this->next_question_id]);
     }
 
     public function update(Request $request, int $id)
