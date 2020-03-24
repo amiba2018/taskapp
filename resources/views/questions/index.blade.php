@@ -18,12 +18,24 @@
             </div>
         </div>
         <div class="btn">
-        <form action="/{{ $question->id }}/{{ $answer->id }}" method="post">
-        @method('DELETE')
-        @csrf
-            <button type="submit" class="submit-btn" onclick="return confirm('本当に削除します？')">削除</button>
-            <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
+            @if (Auth::user()->is_favorite($question->id))
+            <form action="/{{ $question->id }}" method="post">
+            @method('DELETE')
+            @csrf
+                <button type="submit" class="submit-btn">お気に入り解除</button>
+            @else
+            <form action="/{{ $question->id }}" method="post">
+            @method('POST')
+            @csrf
+                <button type="submit" class="submit-btn">お気に入り登録</button>
+            @endif
+                <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
             </form>
+            <form action="/{{ $question->id }}/{{ $answer->id }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="" onclick="return confirm('本当に削除します？')">削除する</button>
+            </form>    
         </div>
     </div>
     @endforeach
@@ -31,5 +43,4 @@
     <div class="d-flex justify-content-center">
     {{ $user_questions->links() }}
     </div>
-    
 @endsection

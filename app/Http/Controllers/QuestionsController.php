@@ -33,6 +33,18 @@ class QuestionsController extends Controller
         return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
     }
 
+    public function favoriteStore(int $id)
+    {
+            Auth::user()->favorite($id);
+            return back();
+    }
+
+    public function favoriteDestroy($id)
+    {
+            Auth::user()->unfavorite($id);
+            return back();
+    }
+
     public function delete(int $Qid, int $Aid)
     {
         Question::destroy($Qid);
