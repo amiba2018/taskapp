@@ -10,6 +10,40 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function favorites()
+    {
+        return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
+    }
+
+    public function favorite($question_id)
+    {
+        $exist = $this->is_favorite($question_id);
+
+        if($exist){
+            return false;
+        }else{
+            $this->favorites()->attach($question_id);
+            return true;
+        }
+    }
+
+    public function unfavorite($question_id)
+    {
+        $exist = $this->is_favorite($question_id);
+
+        if($exist){
+            $this->favorites()->detach($question_id);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function is_favorite($question_id)
+    {
+        return $this->favorites()->where('question_id',$question_id)->exists();
+    }
+
     public function questions()
     {
         return $this->hasMany(Question::class);
