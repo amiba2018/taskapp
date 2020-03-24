@@ -3,19 +3,18 @@
 @section('content')
     @foreach($user_questions as $question)
     <div class="title">
-    <span class="box-title">問題</span>
+    <span class="box-title">解答</span>
         <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}</h1></div>
         @foreach($question->answers as $answer)
         <div class="answers">
             <div class="first_answer">
-                <p class="subtitle">解答</p>
-                <textarea name="first_answer" cols="52" rows="2">{{ $answer->first_answer }}</textarea>
+                <p>{{ $answer->first_answer }}</p>
             </div>
             <div class="second_answer">
-                <textarea name="second_answer" cols="52" rows="2">{{ $answer->second_answer }}</textarea>
+                <p>{{ $answer->second_answer }}</p>
             </div>
             <div class="third_answer">
-                <textarea name="third_answer" cols="52" rows="2">{{ $answer->third_answer }}</textarea>
+                <p>{{ $answer->third_answer }}</p>
             </div>
         </div>
         <div class="btn">
@@ -29,4 +28,8 @@
     </div>
     @endforeach
     @endforeach
+    <div class="d-flex justify-content-center">
+    {{ $user_questions->links() }}
+    </div>
+    
 @endsection

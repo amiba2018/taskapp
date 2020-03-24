@@ -28,8 +28,6 @@
             </div>
             <div class="btn">
                 <button type="submit"  class="submit-btn">模範解答</button>
-                <button type="button" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'" class="button">次の問題へ</button>
-                <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button>
             </div>
         </div>
     </form>

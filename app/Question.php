@@ -3,10 +3,48 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class Question extends Model
 {
     protected $fillable = ["user_id", "first_word", "second_word"];
+
+
+    public static function createQuestion($request)
+    {
+        return DB::transaction(function () use ($request) {
+            $question = Question::create([
+                "user_id"  => Auth::id(),
+                "first_word"  => $request->first_word,
+                "second_word"  => $request->second_word,
+            ]);
+
+            Answer::create([
+                "question_id"  => $question->id,
+                "first_answer"  => $request->first_answer,
+                "second_answer"  => $request->second_answer,
+                "third_answer"  => $request->third_answer,
+            ]);
+        });
+    }
+
+    public static function updateQuestion($request, int $id)
+    {
+        $question = Question::findOrFail($id);
+        return DB::transaction(function () use ($request, $question) {
+        $question->update([
+                "first_word" => $request->first_word,
+                "second_word" => $request->second_word,
+            ]);
+        $answers = $question->answers;
+        $answers[0]->update([
+                "first_answer" => $request->first_answer,
+                "second_answer" => $request->second_answer,
+                "third_answer" => $request->third_answer,
+            ]);
+        });
+    }
 
     public function answers()
     {

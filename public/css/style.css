@@ -1,8 +1,50 @@
 @charset "utf-8";
 
+ul {
+  font-size: 0;/*隙間をなくす*/
+  text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #AAD6EC;
+}
+li {
+  font-size: 23px;
+  display: inline-block;
+	border-right: 1px solid #bbbbbb;
+}
+
+.login {
+  float: right;
+}
+li:last-child {
+	border-right: none;
+}
+li a {
+	display: block;
+	color: #FFF;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+li a:hover:not(.active) {
+	background-color: #a9bce2;
+}
+
+.active {
+  color: #88bcd6;
+}
+
+.page-link {
+  display: block;
+	color: #FFF;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
 body {
   width: 100vm;
-  font-size: 20px;
+  font-size: 23px;
   color: #5B5B5B;
   text-align: center;
 }
@@ -112,7 +154,15 @@ textarea {
 }
 
 .nav-btn:active {
-  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
-  transform: translateY(4px);/*下に動く*/
+-webkit-transform: translateY(4px);/*ボタンを押したとき*/
+transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
+
+.pagination {
+  text-align: center;
+}
+
+/* .page-item {
+  
+} */
