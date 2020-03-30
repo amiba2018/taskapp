@@ -20,12 +20,12 @@
         <div class="btn">
 
             @if (Auth::user()->is_favorite($question->id))
-            <form action="/{{ $question->id }}" method="post">
+            <form action="/chart/{{ $question->id }}" method="post">
             @method('DELETE')
             @csrf
                 <button type="submit" class="submit-btn">お気に入り解除</button>
             @else
-            <form action="/{{ $question->id }}" method="post">
+            <form action="/chart/{{ $question->id }}" method="post">
             @method('POST')
             @csrf
                 <button type="submit" class="submit-btn">お気に入り登録</button>
@@ -33,7 +33,7 @@
                 <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
                 <button form="delete" type="submit" class="nav-btn" onclick="return confirm('本当に削除します？')">削除する</button>
             </form>
-            <form id="delete" action="/{{ $question->id }}/{{ $answer->id }}" method="post">
+            <form id="delete" action="/chart/{{ $question->id }}/{{ $answer->id }}" method="post">
             @method('DELETE')
             @csrf
             </form> 
