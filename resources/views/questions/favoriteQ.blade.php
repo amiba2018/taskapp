@@ -4,7 +4,7 @@
     <form action="/favorites/{{ $question->id }}/answer" method="post">
         @csrf
         <div class="title">
-        <span class="box-title">お気に入りのお題</span>
+        <span class="box-title">お気に入り</span>
             <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}である</h1></div>
             <div class="answers">
                 <div class="first_answer">
@@ -28,6 +28,8 @@
             </div>
             <div class="btn">
                 <button type="submit"  class="submit-btn">模範解答</button>
+                <button type="button" class="nav-btn" onclick="location.href='/favorites/{{ $Q_id[0]['question_id'] }}'">次の問題へ</button>
+                <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $Q_id[0]['question_id'] }}'">お気に入りの問題へ</button>
             </div>
         </div>
     </form>

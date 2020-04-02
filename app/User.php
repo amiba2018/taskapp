@@ -60,10 +60,25 @@ class User extends Authenticatable
         return $this->favorites()->where('question_id',$question_id)->exists();
     }
 
+    public function isUserFavorite($user_id)
+    {
+        $exit = $this->favorites()->where('user_id',$user_id);
+        if(!$exit) {
+            return false;
+        }
+        return true;
+    }
+
     public function questions()
     {
         return $this->hasMany(Question::class);
     }
+
+    public static function getUserName($user_id) 
+    {
+        return User::where('id',$user_id)->value('name');
+    }
+    
 
     /**
      * The attributes that are mass assignable.
