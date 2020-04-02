@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Log;
+use DB;
 
 class User extends Authenticatable
 {
@@ -15,27 +17,41 @@ class User extends Authenticatable
         return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
     }
 
+    // public function favorite($question_id)
+    // {
+    //     $question_id = "a";
+    //     return DB::transaction(function () use ($question_id) {
+    //         DB::enableQueryLog();
+    //             $this->favorites()->attach($question_id);
+    //         Log::debug('sql_debug_log',['favorite' => DB::getQueryLog()]);
+    //     });
+    // }
+
     public function favorite($question_id)
     {
-        $exist = $this->is_favorite($question_id);
-
-        if($exist){
-            return false;
-        }else{
+        DB::beginTransaction();
+        DB::enableQueryLog();
+        try {
             $this->favorites()->attach($question_id);
-            return true;
+            Log::debug('sql_debug_log', ['favorite' => DB::getQueryLog()]);
+            DB::commit();
+        } catch (\Exception $e) {
+            report($e);
+            DB::rollback();
         }
     }
 
     public function unfavorite($question_id)
     {
-        $exist = $this->is_favorite($question_id);
-
-        if($exist){
+        DB::beginTransaction();
+        DB::enableQueryLog();
+        try {
             $this->favorites()->detach($question_id);
-            return true;
-        }else{
-            return false;
+            Log::debug('sql_debug_log', ['unfavorite' => DB::getQueryLog()]);
+            DB::commit();
+        } catch (\Exception $e) {
+            report($e);
+            DB::rollback();
         }
     }
 

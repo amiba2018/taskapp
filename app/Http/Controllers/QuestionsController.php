@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestValidate;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Log;
 
 class QuestionsController extends Controller
 {
@@ -33,13 +34,13 @@ class QuestionsController extends Controller
         return view('questions.index', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
     }
 
-    public function favoriteStore(int $id)
+    public function storeFavorite(int $id)
     {
             Auth::user()->favorite($id);
             return back();
     }
 
-    public function favoriteDestroy($id)
+    public function destroyFavorite($id)
     {
             Auth::user()->unfavorite($id);
             return back();
@@ -49,7 +50,7 @@ class QuestionsController extends Controller
     {
         Question::destroy($Qid);
         Answer::destroy($Aid);
-        return redirect('/');
+        return redirect('/chart');
     }
 
     public function question($id)
@@ -88,5 +89,21 @@ class QuestionsController extends Controller
     {
         Question::updateQuestion($request, $id);
         return redirect("/edit/{$id}");
+    }
+
+    public function favoriteQ($id)
+    {
+        $question = Question::findOrFail($id);
+        return view('questions.favoriteQ',['question' => $question, 'next_question_id' => $this->next_question_id]);
+    }
+
+    public function favoriteA(Request $request, $id)
+    {
+        $question = Auth::user()->favorites()->where('question_id',$question_id);
+        dd($question);
+        $user_answers = $request->all();
+        $question = Question::findOrFail($id);
+        $answers = $question->answers;
+        return view('questions.favoriteA',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id]);
     }
 }
