@@ -59,14 +59,19 @@ class Question extends Model
         }
     }
 
-    public function answers()
+    public function answer()
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsTo(Answer::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function favorite()
+    {
+        return $this->belongsTo(Favorite::class);
     }
 
 }

@@ -29,10 +29,6 @@
             @csrf
                 <button type="submit" class="submit-btn">お気に入り登録</button>
             @endif
-            @if (Auth::id() == $question->user_id)
-                <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
-                <button form="delete" type="submit" class="nav-btn" onclick="return confirm('本当に削除します？')">削除する</button>
-            @endif
             </form>
             <form id="delete" action="/chart/{{ $question->id }}/{{ $answer->id }}" method="post">
             @method('DELETE')

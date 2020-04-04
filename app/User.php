@@ -12,20 +12,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // public function favorites()
+    // {
+    //     return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
+    // }
+
     public function favorites()
     {
-        return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
+        return $this->belongsTo(Favorite::class);
     }
-
-    // public function favorite($question_id)
-    // {
-    //     $question_id = "a";
-    //     return DB::transaction(function () use ($question_id) {
-    //         DB::enableQueryLog();
-    //             $this->favorites()->attach($question_id);
-    //         Log::debug('sql_debug_log',['favorite' => DB::getQueryLog()]);
-    //     });
-    // }
 
     public function favorite($question_id)
     {
@@ -60,14 +55,7 @@ class User extends Authenticatable
         return $this->favorites()->where('question_id',$question_id)->exists();
     }
 
-    public function isUserFavorite($user_id)
-    {
-        $exit = $this->favorites()->where('user_id',$user_id);
-        if(!$exit) {
-            return false;
-        }
-        return true;
-    }
+
 
     public function questions()
     {
@@ -79,7 +67,6 @@ class User extends Authenticatable
         return User::where('id',$user_id)->value('name');
     }
     
-
     /**
      * The attributes that are mass assignable.
      *

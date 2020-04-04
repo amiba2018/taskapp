@@ -21,11 +21,11 @@ class Favorites extends Migration
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
-                  ->onDelete('cascade'); // userが削除されたとき、それに関連するfavoritesも一気に削除される
+                  ->onDelete('cascade'); 
             $table->foreign('question_id')
                   ->references('id')
                   ->on('questions')
-                  ->onDelete('cascade'); // questionが削除されたとき、それに関連するfavoritesも一気に削除される
+                  ->onDelete('cascade'); 
         });
     }
 

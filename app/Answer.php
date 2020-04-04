@@ -26,5 +26,4 @@ class Answer extends Model
         }
         return true;
     }
-
 }

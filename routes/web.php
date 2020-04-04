@@ -24,13 +24,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/edit/{id}', 'QuestionsController@update');
     Route::get('/create', 'QuestionsController@create');
     Route::post('/create', 'QuestionsController@store');
-
-    Route::get('/favorites/{id}', 'QuestionsController@favoriteQ');
-    Route::post('/favorites/{id}/answer', 'QuestionsController@favoriteA');
+    Route::get('/favorites/{id}', 'QuestionsController@favoriteQuestion');
+    Route::post('/favorites/{id}/answer', 'QuestionsController@favoriteAnswer');
 });
 Route::get('/questions/{id}', 'QuestionsController@question');
 Route::post('/questions/{id}/answer', 'QuestionsController@answer');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 

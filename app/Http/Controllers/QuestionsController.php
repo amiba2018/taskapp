@@ -83,7 +83,9 @@ class QuestionsController extends Controller
     public function question($id)
     {
         $question = Question::findOrFail($id);
-        $exit = Auth::user()->favorites()->get(['user_id']);
+        // $exit = Auth::user()->favorites()->get(['user_id']);
+        $exit = $question->answer;
+        // $exit = $question->favorite;
         // $exit = Auth::user()->isUserFavorite(Auth::id());
         dd($exit);
         if(!Auth::user()->isUserFavorite(Auth::id())) {
@@ -97,8 +99,9 @@ class QuestionsController extends Controller
     {
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
-        $answers = $question->answers;
-        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id]);
+        $answers = $question->answer;
+        $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
+        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id, 'Q_id' => $Q_id]);
     }
 
     public function create()
@@ -115,7 +118,7 @@ class QuestionsController extends Controller
     public function edit(int $id)
     {
         $question = Question::findOrFail($id);
-        $answers = $question->answers;
+        $answers = $question->answer;
         return view('questions.edit',['question' => $question, 'answers' => $answers, 'next_question_id' => $this->next_question_id]);
     }
 
@@ -125,19 +128,19 @@ class QuestionsController extends Controller
         return redirect("/edit/{$id}");
     }
 
-    public function favoriteQ($id)
+    public function favoriteQuestion($id)
     {
         $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
         $question = Question::findOrFail($Q_id[0]['question_id']);
         return view('questions.favoriteQ',['question' => $question, 'Q_id' => $Q_id, 'next_question_id' => $this->next_question_id]);
     }
 
-    public function favoriteA(Request $request, $id)
+    public function favoriteAnswer(Request $request, $id)
     {
         $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
-        $answers = $question->answers;
+        $answers = $question->answer;
         return view('questions.favoriteA',['question' => $question, 'Q_id' => $Q_id,'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id]);
     }
 }
