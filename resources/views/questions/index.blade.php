@@ -5,16 +5,15 @@
     <div class="title">
     <span class="box-title">あなたのお題</span>
         <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}</h1></div>
-        @foreach($question->answers as $answer)
         <div class="answers">
             <div class="first_answer">
-                <p>{{ $answer->first_answer }}</p>
+                <p>{{ $question->answer->first_answer }}</p>
             </div>
             <div class="second_answer">
-                <p>{{ $answer->second_answer }}</p>
+                <p>{{ $question->answer->second_answer }}</p>
             </div>
             <div class="third_answer">
-                <p>{{ $answer->third_answer }}</p>
+                <p>{{ $question->answer->third_answer }}</p>
             </div>
         </div>
         <div class="btn">
@@ -33,13 +32,12 @@
                 <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
                 <button form="delete" type="submit" class="nav-btn" onclick="return confirm('本当に削除します？')">削除する</button>
             </form>
-            <form id="delete" action="/chart/{{ $question->id }}/{{ $answer->id }}" method="post">
+            <form id="delete" action="/chart/{{ $question->id }}/{{ $question->answer->id }}" method="post">
             @method('DELETE')
             @csrf
             </form> 
         </div>
     </div>
-    @endforeach
     @endforeach
     <div class="d-flex justify-content-center">
     {{ $user_questions->links() }}

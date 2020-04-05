@@ -7,13 +7,13 @@
         <div class="answers">
             <div class="first_answer">
                 <p class="subtitle">模範解答</p>
-                <p>@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</p>
+                <p>{{ $answers->first_answer }}</p>
             </div>
             <div class="second_answer">
-                <p>@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</p>
+                <p>{{ $answers->second_answer }}</p>
             </div>
             <div class="third_answer">
-                <p>@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</p>
+                <p>{{ $answers->third_answer }}</p>
             </div>
             <div class="first_answer">
                 @if(App\Answer::is_user_answers($user_answers))

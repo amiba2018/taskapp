@@ -22,8 +22,7 @@ class QuestionsController extends Controller
 
     public function index(Request $request)
     {
-        $user_info = Auth::user();
-        $user_questions = $user_info->questions->reverse()->values();
+        $user_questions = Auth::user()->questions->reverse()->values();
         $user_questions = new LengthAwarePaginator(
             $user_questions->forPage($request->page,3),
             count($user_questions),
@@ -83,12 +82,8 @@ class QuestionsController extends Controller
     public function question($id)
     {
         $question = Question::findOrFail($id);
-        // $exit = Auth::user()->favorites()->get(['user_id']);
-        $exit = $question->answer;
-        // $exit = $question->favorite;
-        // $exit = Auth::user()->isUserFavorite(Auth::id());
-        dd($exit);
-        if(!Auth::user()->isUserFavorite(Auth::id())) {
+        $auth_id = Auth::id();
+        if(Auth::user()->isUserFavorite($auth_id)) {
             $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
             return view('questions.question',['question' => $question, 'next_question_id' => $this->next_question_id, 'Q_id' => $Q_id]);
         }

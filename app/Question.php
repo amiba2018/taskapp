@@ -61,7 +61,7 @@ class Question extends Model
 
     public function answer()
     {
-        return $this->belongsTo(Answer::class);
+        return $this->hasOne(Answer::class);
     }
 
     public function user()
@@ -69,9 +69,9 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favorite()
+    public function favorites()
     {
-        return $this->belongsTo(Favorite::class);
+        return $this->hasMany(Favorite::class);
     }
 
 }

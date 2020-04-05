@@ -14,12 +14,17 @@ class User extends Authenticatable
 
     // public function favorites()
     // {
-    //     return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
+    //     return $this->belongsTo(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
     // }
+
+    public function isUserFavorite($user_id)
+    {
+        return $this->favorites()->where('user_id',$user_id)->exists();
+    }
 
     public function favorites()
     {
-        return $this->belongsTo(Favorite::class);
+        return $this->hasMany(Favorite::class);
     }
 
     public function favorite($question_id)
@@ -54,8 +59,6 @@ class User extends Authenticatable
     {
         return $this->favorites()->where('question_id',$question_id)->exists();
     }
-
-
 
     public function questions()
     {
