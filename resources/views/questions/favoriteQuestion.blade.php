@@ -29,7 +29,7 @@
             <div class="btn">
                 <button type="submit"  class="submit-btn">模範解答</button>
                 <button type="button"  class="nav-btn" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'">次の問題へ</button>
-                <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $Q_id[0]['question_id'] }}'">お気に入りの問題へ</button>
+                <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $question_id[0]['question_id'] }}'">お気に入りの問題へ</button>
             </div>
         </div>
     </form>

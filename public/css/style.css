@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 ul {
-  font-size: 0;/*隙間をなくす*/
+  font-size: 0;
   text-align: center;
 	list-style-type: none;
 	margin: 0;
@@ -126,7 +126,7 @@ textarea {
   margin-top: 20px;
   padding:5px 10px;
   text-decoration: none;
-  background: #FC9D9D;/*ボタン色*/
+  background: #FC9D9D;
   color: #FFF;
   border-bottom: solid 4px rgb(248, 118, 118);
   border-radius: 4px;
@@ -135,9 +135,9 @@ textarea {
 }
 
 .submit-btn:active {
-  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
 }
 
 .nav-btn {
@@ -155,37 +155,11 @@ textarea {
 }
 
 .nav-btn:active {
--webkit-transform: translateY(4px);/*ボタンを押したとき*/
-transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
+-webkit-transform: translateY(4px);
+transform: translateY(4px);
+  border-bottom: none;
 }
 
 .pagination {
   text-align: center;
 }
-
-.btn2 {
-  background: #EEF9FF;
-  height: 80px;
-  text-align: right;
-}
-
-.nav-btn2 {
-  font-size: 18px;
-  margin-top: 20px;
-  margin-right: 160px;
-  display: inline-block;
-  padding: 5px 10px;
-  text-decoration: none;
-  background: #5B5B5B;
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
-  cursor: pointer;  
-}
-
-.nav-btn2:active {
-  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
-  transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
-  }

@@ -13,20 +13,6 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
-    // public static function is_user_questions($user_answers) 
-    // {
-    //     $answers_count = 0;
-    //     foreach($user_answers as $user_answer) {
-    //         if(!empty($user_answer)) {
-    //             $answers_count++;
-    //         }
-    //     }
-    //     if($answers_count === 0) {
-    //         return false;
-    //     }
-    //     return true;
-    // }
-
     public static function is_user_answers($user_answers) 
     {
         $answers_count = 0;

@@ -31,7 +31,7 @@
         <div class="btn">
             <button type="button" class="nav-btn" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'">次の問題へ</button>
             @if(Auth::user()->isUserFavorite(Auth::id()))
-            <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $Q_id[0]['question_id'] }}'">お気に入りの問題へ</button>
+            <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $question_id[0]['question_id'] }}'">お気に入りの問題へ</button>
             @endif
         </div>
     </div>
