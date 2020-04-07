@@ -6,10 +6,9 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <ul>
-        <li class="active"><a href="/questions/{{ $next_question_id[0]['id'] }}">新しいお題</a></li>
+        <li class="active"><a href="/questions/{{ $next_question_id[0]['id'] }}">お題</a></li>
         <li><a href='/create'>作成</a></li>
         <li><a href='/chart'>一覧</a></li>
-        <li><a href='/favorites/{{ $next_question_id[0]['id'] }}'>お気に入りお題</a></li>
         <li class="login"><a href="/login">ログイン</a></li>
     </ul>
 </head>

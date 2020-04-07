@@ -7,16 +7,18 @@
         <div class="answers">
             <div class="first_answer">
                 <p class="subtitle">模範解答(お気に入り)</p>
-                <p>@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</p>
+                <p>{{ $answers->first_answer }}</p>
             </div>
             <div class="second_answer">
-                <p>@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</p>
+                <p>{{ $answers->second_answer }}</p>
             </div>
             <div class="third_answer">
-                <p>@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</p>
+                <p>{{ $answers->third_answer }}</p>
             </div>
             <div class="first_answer">
+            @if(App\Answer::is_user_answers($user_answers))
                 <p class="subtitle">あなたの答え</p>
+            @endif
                 <p>{{ $user_answers['first_answer'] }}</p>
             </div>
             <div class="second_answer">
@@ -27,8 +29,8 @@
             </div>
         </div>
         <div class="btn">
-            <!-- <button type="button" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'" class="button">次の問題へ</button> -->
-            <!-- <button type="button" class="nav-btn" onclick="location.href='/menu'" >戻る</button> -->
+            <button type="button" class="nav-btn" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'">次の問題へ</button>
+            <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $Q_id[0]['question_id'] }}'">お気に入りの問題へ</button>
         </div>
     </div>
 @endsection

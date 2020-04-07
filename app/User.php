@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Log;
 use DB;
 
@@ -12,47 +13,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     public function favorites()
     {
-        return $this->belongsToMany(Question::class, 'favorites', 'user_id', 'question_id')->withTimestamps();
-    }
-
-    // public function favorite($question_id)
-    // {
-    //     $question_id = "a";
-    //     return DB::transaction(function () use ($question_id) {
-    //         DB::enableQueryLog();
-    //             $this->favorites()->attach($question_id);
-    //         Log::debug('sql_debug_log',['favorite' => DB::getQueryLog()]);
-    //     });
-    // }
-
-    public function favorite($question_id)
-    {
-        DB::beginTransaction();
-        DB::enableQueryLog();
-        try {
-            $this->favorites()->attach($question_id);
-            Log::debug('sql_debug_log', ['favorite' => DB::getQueryLog()]);
-            DB::commit();
-        } catch (\Exception $e) {
-            report($e);
-            DB::rollback();
-        }
-    }
-
-    public function unfavorite($question_id)
-    {
-        DB::beginTransaction();
-        DB::enableQueryLog();
-        try {
-            $this->favorites()->detach($question_id);
-            Log::debug('sql_debug_log', ['unfavorite' => DB::getQueryLog()]);
-            DB::commit();
-        } catch (\Exception $e) {
-            report($e);
-            DB::rollback();
-        }
+        return $this->hasMany(Favorite::class);
     }
 
     public function is_favorite($question_id)
@@ -60,11 +28,27 @@ class User extends Authenticatable
         return $this->favorites()->where('question_id',$question_id)->exists();
     }
 
-    public function questions()
+    public function isUserFavorite($user_id)
     {
-        return $this->hasMany(Question::class);
+        return $this->favorites()->where('user_id',$user_id)->exists();
     }
 
+    public function jageUserFavorite()
+    {
+        $auth_id = Auth::id();
+        if (Auth::user()->isUserFavorite($auth_id)) {
+            return Auth::user()->favorites()->get(['question_id'])->random(1);
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static function getUserName($user_id) 
+    {
+        return User::where('id',$user_id)->value('name');
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
