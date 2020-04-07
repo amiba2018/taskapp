@@ -164,6 +164,28 @@ transform: translateY(4px);/*下に動く*/
   text-align: center;
 }
 
-/* .page-item {
-  
-} */
+.btn2 {
+  background: #EEF9FF;
+  height: 80px;
+  text-align: right;
+}
+
+.nav-btn2 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-right: 160px;
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+  background: #5B5B5B;
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  cursor: pointer;  
+}
+
+.nav-btn2:active {
+  -webkit-transform: translateY(4px);/*ボタンを押したとき*/
+  transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }

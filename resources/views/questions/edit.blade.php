@@ -16,19 +16,19 @@
                 @enderror
             <div class="answers">
                 <div class="first_answer">
-                    <textarea name="first_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->first_answer }}@endforeach</textarea>
+                    <textarea name="first_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ $answers->first_answer }}</textarea>
                     @error('first_answer')
                     <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="second_answer">
-                    <textarea name="second_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->second_answer }}@endforeach</textarea>
+                    <textarea name="second_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ $answers->second_answer }}</textarea>
                     @error('second_answer')
                     <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="third_answer">
-                    <textarea name="third_answer" placeholder="答えを入力してください" cols="52" rows="2">@foreach($answers as $answer){{ $answer->third_answer }}@endforeach</textarea>
+                    <textarea name="third_answer" placeholder="答えを入力してください" cols="52" rows="2">{{ $answers->third_answer }}</textarea>
                     @error('third_answer')
                     <p>{{ $message }}</p>
                     @enderror

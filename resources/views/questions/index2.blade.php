@@ -1,6 +1,11 @@
 @extends('layouts.header')
 @section('title', 'Answer')
 @section('content')
+@if($is_questions)
+<div class="btn2">
+    <button type="button" class="nav-btn2" onclick="location.href='/authchart'">あなたの一覧へ</button>
+</div>
+@endif
     @foreach($questions as $question)
     <div class="title">
     <span class="box-title">{{ App\User::getUserName($question->user_id) }}さんのお題</span>

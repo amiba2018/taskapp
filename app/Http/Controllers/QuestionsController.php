@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 use App\User;
+use App\Favorite;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestValidate;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -35,20 +36,9 @@ class QuestionsController extends Controller
 
     public function index2(Request $request)
     {
-        // {{ $question->user->value('name') }}
-        // $question = Question::findOrFail(21);
-        // $user_id = $question->user_id;
-        // $abc = User::where('id',$user_id)->value('name');
-        // dd($abc);
+        $is_questions = Auth::user()->questions()->exists();
         $user_id = Auth::id();
-        // $user_info = Auth::user();
         $questions = Question::all()->reverse()->values();
-        // $user_questions = $user_info->questions->reverse()->values();
-        // $user_questions = Question::all()->where('user_id',$user_id)->exists();
-        // $user_questions = $user_info->questions->where('user_id',$user_id);
-        // dd($user_questions);
-        // $questions = Question::all();
-        // dd($questions);
         $questions = $questions->diff(Question::whereIn('user_id', [$user_id])->get());
         $questions = new LengthAwarePaginator(
             $questions->forPage($request->page,3),
@@ -57,18 +47,20 @@ class QuestionsController extends Controller
             $request->page,
             array('path' => $request->url())
         );
-        return view('questions.index2', ['questions' => $questions, 'next_question_id' => $this->next_question_id]);
+        return view('questions.index2', ['is_questions' => $is_questions,'questions' => $questions, 'next_question_id' => $this->next_question_id]);
     }
 
     public function storeFavorite(int $id)
     {
-        Auth::user()->favorite($id);
+        Favorite::addFavorite($id);
         return back();
     }
 
     public function destroyFavorite($id)
     {
-        Auth::user()->unfavorite($id);
+        $user_id = Auth::id();
+        $favorite_id = Favorite::where('user_id', $user_id)->where('question_id', $id)->value('id'); 
+        Favorite::destroy($favorite_id);
         return back();
     }
 
@@ -76,18 +68,14 @@ class QuestionsController extends Controller
     {
         Question::destroy($Qid);
         Answer::destroy($Aid);
-        return redirect('/chart');
+        return back();
     }
 
     public function question($id)
     {
         $question = Question::findOrFail($id);
-        $auth_id = Auth::id();
-        if(Auth::user()->isUserFavorite($auth_id)) {
-            $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
-            return view('questions.question',['question' => $question, 'next_question_id' => $this->next_question_id, 'Q_id' => $Q_id]);
-        }
-        return view('questions.question',['question' => $question, 'next_question_id' => $this->next_question_id]);
+        $Q_id = Auth::user()->jageUserFavorite();
+        return view('questions.question',['question' => $question, 'next_question_id' => $this->next_question_id, 'Q_id' => $Q_id]);
     }
 
     public function answer(Request $request, $id)
@@ -95,8 +83,8 @@ class QuestionsController extends Controller
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
-        $Q_id = Auth::user()->favorites()->get(['question_id'])->random(1);
-        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id, 'Q_id' => $Q_id]);
+        $Q_id = Auth::user()->jageUserFavorite();
+        return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_id' => $this->next_question_id,'Q_id' => $Q_id]);
     }
 
     public function create()
