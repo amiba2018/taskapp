@@ -61,6 +61,11 @@ Let's try!
 
 * お気に入り機能の実装。自己満足??? 本当に必要だったか微妙ですが、ヘビーユーザーには必要な機能ですww
 
+# ER図
+
+<img width="823" alt="スクリーンショット 2020-04-09 15 16 19" src="https://user-images.githubusercontent.com/54348732/78864190-1e38f400-7a76-11ea-80da-c5abaaf9f9f5.png">
+
+
 # 開発環境
  
 * Laravel Framework 6.12.0

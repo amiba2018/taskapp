@@ -34,7 +34,7 @@ class QuestionsController extends Controller
         return view('questions.show', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
     }
 
-    public function yourShow(Request $request)
+    public function selfShow(Request $request)
     {
         $user_id = Auth::id();
         $questions = Question::all()->reverse()->values();

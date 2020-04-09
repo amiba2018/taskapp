@@ -13,7 +13,7 @@
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/authchart', 'QuestionsController@show');
-    Route::get('/chart', 'QuestionsController@yourShow');
+    Route::get('/chart', 'QuestionsController@selfShow');
     Route::post('/chart/{id}', 'QuestionsController@storeFavorite');
     Route::delete('/chart/{question_id}/{answer_id}', 'QuestionsController@delete');
     Route::delete('/chart/{id}','QuestionsController@destroyFavorite');
