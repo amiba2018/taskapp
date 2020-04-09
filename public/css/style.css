@@ -9,6 +9,7 @@ ul {
 	overflow: hidden;
 	background-color: #AAD6EC;
 }
+
 li {
   font-size: 23px;
   display: inline-block;
@@ -18,15 +19,18 @@ li {
 .login {
   float: right;
 }
+
 li:last-child {
 	border-right: none;
 }
+
 li a {
 	display: block;
 	color: #FFF;
 	padding: 14px 16px;
 	text-decoration: none;
 }
+
 li a:hover:not(.active) {
 	background-color: #a9bce2;
 }
@@ -42,6 +46,7 @@ li a:hover:not(.active) {
 	padding: 14px 16px;
 	text-decoration: none;
 }
+
 body {
   width: 100vm;
   font-size: 23px;
@@ -101,9 +106,11 @@ input {
 .first_answer {
   margin: 20px 20px;
 }
+
 .second_answer {
   margin: 20px 20px;
 }
+
 .third_answer {
   margin: 20px 20px;
 }

@@ -29,7 +29,7 @@
             @csrf
                 <button type="submit" class="submit-btn">お気に入り登録</button>
             @endif
-                <button type="button" class="nav-btn" onclick="location.href='/edit/{{$question->id}}'">編集する</button>
+                <button type="button" class="nav-btn" onclick="location.href='/question/edit/{{$question->id}}'">編集する</button>
                 <button form="delete" type="submit" class="nav-btn" onclick="return confirm('本当に削除します？')">削除する</button>
             </form>
             <form id="delete" action="/chart/{{ $question->id }}/{{ $question->answer->id }}" method="post">

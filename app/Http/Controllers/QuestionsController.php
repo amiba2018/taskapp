@@ -94,7 +94,7 @@ class QuestionsController extends Controller
     public function store(RequestValidate $request)
     {
         Question::createQuestion($request);
-        return redirect('/create');
+        return redirect('/question/create');
     }
 
     public function edit(int $id)
@@ -107,7 +107,7 @@ class QuestionsController extends Controller
     public function update(Request $request, int $id)
     {
         Question::updateQuestion($request, $id);
-        return redirect("/edit/{$id}");
+        return redirect("/question/edit/{$id}");
     }
 
     public function favoriteQuestion(int $id)

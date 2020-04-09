@@ -1,7 +1,7 @@
 @extends('layouts.header')
 @section('title', 'Create')
 @section('content')
-    <form action="/create" method="post">
+    <form action="/question/create" method="post">
         @csrf
         <div class="title">
         <span class="box-title">作成</span>
