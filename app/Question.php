@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use DB;
-use Log;
 
 class Question extends Model
 {
@@ -29,7 +28,6 @@ class Question extends Model
     public static function createQuestion($request)
     {
         DB::beginTransaction();
-        DB::enableQueryLog();
         try {
                 $question = Question::create([
                     "user_id"  => Auth::id(),
@@ -42,7 +40,6 @@ class Question extends Model
                     "second_answer"  => $request->second_answer,
                     "third_answer"  => $request->third_answer,
                 ]);
-                Log::debug('sql_debug_log', ['createQuestion' => DB::getQueryLog()]);
                 DB::commit();
             } catch (\Exception $e) {
                 report($e);
@@ -53,7 +50,6 @@ class Question extends Model
     public static function updateQuestion($request, int $id)
     {
         DB::beginTransaction();
-        DB::enableQueryLog();
         $question = Question::findOrFail($id);
         try {
             $question->update([
@@ -66,7 +62,6 @@ class Question extends Model
                 "second_answer" => $request->second_answer,
                 "third_answer" => $request->third_answer,
             ]);
-            Log::debug('sql_debug_log', ['updateQuestion' => DB::getQueryLog()]);
             DB::commit();
         } catch (\Exception $e) {
             report($e);

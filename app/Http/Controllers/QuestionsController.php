@@ -46,7 +46,7 @@ class QuestionsController extends Controller
             $request->page,
             array('path' => $request->url())
         );
-        return view('questions.yourShow', ['questions' => $questions, 'next_question_id' => $this->next_question_id]);
+        return view('questions.selfShow', ['questions' => $questions, 'next_question_id' => $this->next_question_id]);
     }
 
     public function storeFavorite(int $id)
