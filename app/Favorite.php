@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use DB;
-use Log;
 
 class Favorite extends Model
 {
@@ -24,13 +23,11 @@ class Favorite extends Model
     public static function addFavorite($question_id)
     {
         DB::beginTransaction();
-        DB::enableQueryLog();
         try {
                 Favorite::create([
                 "user_id"  => Auth::id(),
                 "question_id"  => $question_id,
             ]);
-            Log::debug('sql_debug_log', ['addFavorite' => DB::getQueryLog()]);
             DB::commit();
         } catch (\Exception $e) {
             report($e);

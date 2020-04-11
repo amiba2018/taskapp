@@ -1,14 +1,9 @@
 @extends('layouts.header')
 @section('title', 'Answer')
 @section('content')
-@if($is_questions)
-<div class="btn2">
-    <button type="button" class="nav-btn2" onclick="location.href='/authchart'">あなたの一覧へ</button>
-</div>
-@endif
-    @foreach($questions as $question)
+    @foreach($user_questions as $question)
     <div class="title">
-    <span class="box-title">{{ App\User::getUserName($question->user_id) }}さんのお題</span>
+    <span class="box-title">あなたのお題</span>
         <div class="question"><h1>{{ $question->first_word }}とは{{ $question->second_word }}</h1></div>
         <div class="answers">
             <div class="first_answer">
@@ -22,6 +17,7 @@
             </div>
         </div>
         <div class="btn">
+
             @if (Auth::user()->is_favorite($question->id))
             <form action="/chart/{{ $question->id }}" method="post">
             @method('DELETE')
@@ -33,6 +29,8 @@
             @csrf
                 <button type="submit" class="submit-btn">お気に入り登録</button>
             @endif
+                <button type="button" class="nav-btn" onclick="location.href='/question/edit/{{$question->id}}'">編集する</button>
+                <button form="delete" type="submit" class="nav-btn" onclick="return confirm('本当に削除します？')">削除する</button>
             </form>
             <form id="delete" action="/chart/{{ $question->id }}/{{ $question->answer->id }}" method="post">
             @method('DELETE')
@@ -42,6 +40,6 @@
     </div>
     @endforeach
     <div class="d-flex justify-content-center">
-    {{ $questions->links() }}
+    {{ $user_questions->links() }}
     </div>
 @endsection

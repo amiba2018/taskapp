@@ -1,7 +1,7 @@
 @extends('layouts.header')
 @section('title', 'Edit')
 @section('content')
-<form action="/edit/{{ $question->id }}"  method="post">
+<form action="/question/edit/{{ $question->id }}"  method="post">
         @csrf
         @method('PUT')
         <div class="title">
