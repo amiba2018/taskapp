@@ -21,7 +21,7 @@ class QuestionsController extends Controller
         $this->next_question_id = Question::get(['id'])->random(1);
     }
 
-    public function show(Request $request)
+    public function selfShow(Request $request)
     {
         $user_questions = Auth::user()->questions->reverse()->values();
         $user_questions = new LengthAwarePaginator(
@@ -31,10 +31,10 @@ class QuestionsController extends Controller
             $request->page,
             array('path' => $request->url())
         );
-        return view('questions.show', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
+        return view('questions.selfShow', ['user_questions' => $user_questions, 'next_question_id' => $this->next_question_id]);
     }
 
-    public function selfShow(Request $request)
+    public function show(Request $request)
     {
         $user_id = Auth::id();
         $questions = Question::all()->reverse()->values();
@@ -46,7 +46,7 @@ class QuestionsController extends Controller
             $request->page,
             array('path' => $request->url())
         );
-        return view('questions.selfShow', ['questions' => $questions, 'next_question_id' => $this->next_question_id]);
+        return view('questions.show', ['questions' => $questions, 'next_question_id' => $this->next_question_id]);
     }
 
     public function storeFavorite(int $id)
