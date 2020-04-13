@@ -47,4 +47,9 @@ class LoginController extends Controller
     {
       return 'name';
     }
+
+    public function redirectPath()
+    {
+        return '/create';
+    }
 }
