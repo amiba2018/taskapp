@@ -40,7 +40,7 @@ class LoginController extends Controller
 
     protected function loggedOut(\Illuminate\Http\Request $request)
     {
-        return redirect('/home');
+        return redirect('/login');
     }
 
     public function username()
@@ -50,6 +50,6 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        return '/create';
+        return '/chart';
     }
 }
