@@ -10,7 +10,7 @@
         <li><a href='/question/create'>作成</a></li>
         <li><a href='/chart'>みんなの一覧</a></li>
         <li><a href='/authchart'>あなたの一覧</a></li>
-        <li class="login"><a href="/login">ログイン</a></li>
+        <li class="login"><a href="/login">ログアウト</a></li>
     </ul>
 </head>
 <body>

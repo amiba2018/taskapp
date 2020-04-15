@@ -104,10 +104,10 @@ class QuestionsController extends Controller
         return view('questions.edit',['question' => $question, 'answers' => $answers, 'next_question_id' => $this->next_question_id]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(RequestValidate $request, int $id)
     {
         Question::updateQuestion($request, $id);
-        return redirect("/question/edit/{$id}");
+        return redirect("/authchart");
     }
 
     public function favoriteQuestion(int $id)
