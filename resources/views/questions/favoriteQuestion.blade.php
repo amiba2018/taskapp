@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Question')
+@section('title', 'favoriteQuestion')
 @section('content')
     <form action="/favorites/{{ $question->id }}/answer" method="post">
         @csrf
