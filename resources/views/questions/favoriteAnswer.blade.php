@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Answer')
+@section('title', 'favoriteAnswer')
 @section('content')
     <div class="title">
     <span class="box-title">答え（お気に入り)</span>

@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title', 'Answer')
+@section('title', 'selfShow')
 @section('content')
     @foreach($user_questions as $question)
     <div class="title">
