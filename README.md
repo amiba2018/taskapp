@@ -37,13 +37,13 @@ Let's try!
 
 ログインユーザーまた、自分以外のユーザーの問題が一覧で表示できます。
 
-<img width="1440" alt="スクリーンショット 2020-04-09 10 39 42" src="https://user-images.githubusercontent.com/54348732/78849116-8542b280-7a4e-11ea-8472-5ef922fca14a.png">
+<img width="1440" alt="スクリーンショット 2020-04-09 10 39 42" src="https://user-images.githubusercontent.com/54348732/79634964-cce0e100-81a8-11ea-8e41-d51cbe9146c2.png">
 
 2. 問題画面
 
 ランダムに問題が表示されます。また、登録したお気に入りの問題も表示できます。
 
- <img width="1440" alt="スクリーンショット 2020-04-09 10 39 54" src="https://user-images.githubusercontent.com/54348732/78849142-98ee1900-7a4e-11ea-8a90-f20e41c25df5.png">
+ <img width="1440" alt="スクリーンショット 2020-04-09 10 39 54" src="https://user-images.githubusercontent.com/54348732/79634750-7c1cb880-81a7-11ea-8e9b-5dc4fcd53d57.png">
 
 3. その他
 
