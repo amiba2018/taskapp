@@ -16,7 +16,7 @@
                 <p>{{ $answers->third_answer }}</p>
             </div>
             <div class="first_answer">
-                @if(App\Answer::is_user_answers($user_answers))
+                @if(App\Answer::isExistUserAnswers($user_answers))
                 <p class="subtitle">あなたの答え</p>
                 @endif
                 <p>{{ $user_answers['first_answer'] }}</p>
@@ -29,9 +29,9 @@
             </div>
         </div>
         <div class="btn">
-            <button type="button" class="nav-btn" onclick="location.href='/questions/{{ $next_question_id[0]['id'] }}'">次の問題へ</button>
+            <button type="button" class="nav-btn" onclick="location.href='/questions/{{ $next_question_ids[0]['id'] }}'">次の問題へ</button>
             @if(Auth::user()->isUserFavorite(Auth::id()))
-            <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $question_id[0]['question_id'] }}'">お気に入りの問題へ</button>
+            <button type="button"  class="nav-btn" onclick="location.href='/favorites/{{ $question_ids[0]['question_id'] }}'">お気に入りの問題へ</button>
             @endif
         </div>
     </div>

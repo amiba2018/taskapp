@@ -78,11 +78,11 @@ Let's try!
 
 **1,** ```git clone https://github.com/amiba2018/taskapp.git```
 
-**2, QuestionsController.php の**`$this->next_question_id = Question::get(['id'])->random(1);` **をコメントアウト。**
+**2, QuestionsController.php の**`$this->next_question_ids = Question::get(['id'])->random(1);` **をコメントアウト。**
 
 **3, ログインユーザーを作成後、**`https://taskapp.marumouken.com/question/create` **にアクセスし、問題を作成**
 
-**4, QuestionsController.php の** `$this->next_question_id = Question::get(['id'])->random(1);` **のコメントアウトを外す**
+**4, QuestionsController.php の** `$this->next_question_ids = Question::get(['id'])->random(1);` **のコメントアウトを外す**
 
 ## 作者
 
