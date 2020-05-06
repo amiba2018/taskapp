@@ -13,7 +13,7 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public static function is_user_answers($user_answers) 
+    public static function isExistUserAnswers($user_answers)
     {
         $answers_count = 0;
         foreach($user_answers as $user_answer) {
