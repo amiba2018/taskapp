@@ -20,7 +20,6 @@ class QuestionsController extends Controller
         $this->next_question_ids = Question::get(['id'])->random(1);
     }
 
-
     public function selfShow(Request $request)
     {
         $user_questions = Auth::user()->questions->reverse()->values();
@@ -33,7 +32,6 @@ class QuestionsController extends Controller
         );
         return view('questions.selfShow', ['user_questions' => $user_questions, 'next_question_ids' => $this->next_question_ids]);
     }
-
 
     public function show(Request $request)
     {
@@ -80,7 +78,6 @@ class QuestionsController extends Controller
 
     public function answer(Request $request, int $id)
     {
-
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
@@ -122,7 +119,6 @@ class QuestionsController extends Controller
     public function favoriteAnswer(Request $request, $id)
     {
         $question_ids = Auth::user()->favorites()->get(['question_id'])->random(1);
-
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
