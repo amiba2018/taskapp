@@ -72,7 +72,7 @@ class QuestionsController extends Controller
     public function question(int $id)
     {
         $question = Question::findOrFail($id);
-        $question_ids = Auth::user()->jageUserFavorite();
+        $question_ids = Auth::user()->isExistUserFavorite();
         return view('questions.question',['question' => $question, 'next_question_ids' => $this->next_question_ids, 'question_ids' => $question_ids]);
     }
 
@@ -81,7 +81,7 @@ class QuestionsController extends Controller
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
-        $question_ids = Auth::user()->jageUserFavorite();
+        $question_ids = Auth::user()->isExistUserFavorite();
         return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_ids' => $this->next_question_ids,'question_ids' => $question_ids]);
     }
 

@@ -18,7 +18,7 @@
         </div>
         <div class="btn">
 
-            @if (Auth::user()->is_favorite($question->id))
+            @if (Auth::user()->isFavorite($question->id))
             <form action="/chart/{{ $question->id }}" method="post">
             @method('DELETE')
             @csrf

@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use Log;
 use DB;
 
 class User extends Authenticatable
@@ -23,7 +22,7 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class);
     }
 
-    public function is_favorite($question_id)
+    public function isFavorite($question_id)
     {
         return $this->favorites()->where('question_id',$question_id)->exists();
     }
@@ -33,7 +32,7 @@ class User extends Authenticatable
         return $this->favorites()->where('user_id',$user_id)->exists();
     }
 
-    public function jageUserFavorite()
+    public function isExistUserFavorite()
     {
         $auth_id = Auth::id();
         if (Auth::user()->isUserFavorite($auth_id)) {
