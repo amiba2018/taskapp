@@ -20,6 +20,7 @@ class QuestionsController extends Controller
         $this->next_question_ids = Question::get(['id'])->random(1);
     }
 
+
     public function selfShow(Request $request)
     {
         $user_questions = Auth::user()->questions->reverse()->values();
@@ -32,6 +33,7 @@ class QuestionsController extends Controller
         );
         return view('questions.selfShow', ['user_questions' => $user_questions, 'next_question_ids' => $this->next_question_ids]);
     }
+
 
     public function show(Request $request)
     {
@@ -72,16 +74,17 @@ class QuestionsController extends Controller
     public function question(int $id)
     {
         $question = Question::findOrFail($id);
-        $question_ids = Auth::user()->jageUserFavorite();
+        $question_ids = Auth::user()->isExistUserFavorite();
         return view('questions.question',['question' => $question, 'next_question_ids' => $this->next_question_ids, 'question_ids' => $question_ids]);
     }
 
     public function answer(Request $request, int $id)
     {
+
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
-        $question_ids = Auth::user()->jageUserFavorite();
+        $question_ids = Auth::user()->isExistUserFavorite();
         return view('questions.answer',['question' => $question, 'answers' => $answers, 'user_answers' => $user_answers, 'next_question_ids' => $this->next_question_ids,'question_ids' => $question_ids]);
     }
 
@@ -119,6 +122,7 @@ class QuestionsController extends Controller
     public function favoriteAnswer(Request $request, $id)
     {
         $question_ids = Auth::user()->favorites()->get(['question_id'])->random(1);
+
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
