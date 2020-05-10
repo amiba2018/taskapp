@@ -20,6 +20,7 @@ class QuestionsController extends Controller
         $this->next_question_ids = Question::get(['id'])->random(1);
     }
 
+    //ログインユーザーの問題と答えの一覧を表示する
     public function selfShow(Request $request)
     {
         $user_questions = Auth::user()->questions->reverse()->values();
@@ -33,6 +34,7 @@ class QuestionsController extends Controller
         return view('questions.selfShow', ['user_questions' => $user_questions, 'next_question_ids' => $this->next_question_ids]);
     }
 
+    //ログインユーザー以外の問題と答えの一覧を表示する
     public function show(Request $request)
     {
         $user_id = Auth::id();
@@ -78,6 +80,7 @@ class QuestionsController extends Controller
 
     public function answer(Request $request, int $id)
     {
+        //ユーザーの答えを一つ一つ空かどうか確認したいので、tokenを取り除いた変数をviewに渡す
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
@@ -119,6 +122,7 @@ class QuestionsController extends Controller
     public function favoriteAnswer(Request $request, $id)
     {
         $question_ids = Auth::user()->favorites()->get(['question_id'])->random(1);
+        //ユーザーの答えを一つ一つ空かどうか確認したいので、tokenを取り除いた変数をviewに渡す
         $user_answers = $request->except('_token');
         $question = Question::findOrFail($id);
         $answers = $question->answer;
