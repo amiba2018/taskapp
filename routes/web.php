@@ -24,6 +24,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/favorites/{id}', 'QuestionsController@favoriteQuestion');
     Route::post('/favorites/{id}/answer', 'QuestionsController@favoriteAnswer');
     Route::get('/questions/{id}', 'QuestionsController@question');
+        Route::get('/questions/{any}', function () {
+            return view('questions.question');
+        })->where('any', '.*');
     Route::post('/questions/{id}/answer', 'QuestionsController@answer');
 });
 
