@@ -10,6 +10,7 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+// mix.sourceMaps().js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/router.js', 'public/js')

@@ -40,13 +40,16 @@
   <div>@{{ next_question_ids }}</div>
   <button v-on:click='spin()'></button>
   <button v-on:click='stop()'></button> -->
-  <div id="app">
-    <router-link to='/ExampleComponent'>detail.vueに遷移</router-link>
-       <router-view />
-    </div>
+
+  <!-- <div id="app">
+    <router-view> -->
+      <!-- <example-component></example-component> -->
+      <!-- </router-view> -->
+    <!-- <router-link to='/ExampleComponent'>detail.vueに遷移</router-link> -->
+      
+    <!-- </div> -->
 <!-- </div> -->
-    <script>
-  //   new Vue({
+  <!-- //   new Vue({
   //   el: '#app',
   //   router: router,
   //   data: {
@@ -73,7 +76,7 @@
   //   }
   // }
   // })
-  //   </script>
-    <!-- <script src=" {{ mix('js/app.js') }} "></script> -->
+  // -->
     
-@endsection
+    <!-- <script src=" {{ mix('js/app.js') }} "></script> -->
+    @endsection

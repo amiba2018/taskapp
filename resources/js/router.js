@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 // コンポーネントをインポート
 import ExampleComponent from './components/ExampleComponent.vue';
-import HelloWorldComponent from './components/HelloWorldComponent.vue';
+import HelloComponent from './components/HelloComponent.vue';
 
 export default new VueRouter({
     // モードの設定
@@ -20,9 +20,9 @@ export default new VueRouter({
             component: ExampleComponent
         },
         {
-            path: '/HelloWorldComponent',
-            name: HelloWorldComponent,
-            component: HelloWorldComponent
+            path: '/Hello',
+            // name: HelloComponent,
+            component: HelloComponent
         }
     ]
 });
