@@ -30,20 +30,13 @@
 import './bootstrap'
 import Vue from 'vue'
 import router from './router'
-import App from './components/ExampleComponent.vue'
-
-Vue.use(App);
-// new Vue({
-//     el: '#app',
-//     router: router
-// })
+import App from './App.vue'
 
 const app = new Vue({
     el: '#app',
+    components: {
+        app: App
+    },
     router: router,
 })
 
-
-// const app = new Vue({
-//     el: '#app',
-// });
