@@ -39,3 +39,8 @@ Route::get('/hello', function () {
 Route::get('/ExampleComponent', function () {
     return view('vue');
 });
+
+Route::get('/header', function () {
+    return view('layouts.header');
+});
+

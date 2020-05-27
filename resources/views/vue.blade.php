@@ -9,7 +9,9 @@
 
 <body>
     <div id="app">
-        <app />
+        <router-link to="/hello">Hello</router-link>
+        <router-link to="/ExampleComponent">Example</router-link>
+        <router-view></router-view>
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>
