@@ -30,3 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/hoge', function () {
+    return view('vue');
+});
+
+Route::get('/ExampleComponent', function () {
+    return view('vue');
+});
