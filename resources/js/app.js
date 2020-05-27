@@ -30,20 +30,9 @@
 import './bootstrap'
 import Vue from 'vue'
 import router from './router'
-import App from './components/ExampleComponent.vue'
-
-Vue.use(App);
-// new Vue({
-//     el: '#app',
-//     router: router
-// })
 
 const app = new Vue({
     el: '#app',
     router: router,
-})
+}).$mount('#app')
 
-
-// const app = new Vue({
-//     el: '#app',
-// });
