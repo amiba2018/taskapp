@@ -97,6 +97,7 @@ h1 {
 
 input {
   font-size: 23px;
+  width: 250px;
 }
 
 .answers {
@@ -117,6 +118,7 @@ input {
 
 textarea {
   font-size: 23px;
+  width: 600px;
 }
 
 .btn {
