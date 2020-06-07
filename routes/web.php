@@ -24,9 +24,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/favorites/{id}', 'QuestionsController@favoriteQuestion');
     Route::post('/favorites/{id}/answer', 'QuestionsController@favoriteAnswer');
     Route::get('/questions/{id}', 'QuestionsController@question');
+        // Route::get('/questions/{any}', function () {
+        //     return view('questions.question');
+        // })->where('any', '.*');
     Route::post('/questions/{id}/answer', 'QuestionsController@answer');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/hello', function () {
+    return view('vue');
+});
+Route::get('/ExampleComponent', function () {
+    return view('vue');
+});
+
+Route::get('/header', function () {
+    return view('layouts.header');
+});
 

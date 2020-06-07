@@ -73,9 +73,10 @@ class QuestionsController extends Controller
 
     public function question(int $id)
     {
+        $questions = Question::all();
         $question = Question::findOrFail($id);
         $question_ids = Auth::user()->isExistUserFavorite();
-        return view('questions.question',['question' => $question, 'next_question_ids' => $this->next_question_ids, 'question_ids' => $question_ids]);
+        return view('questions.question',['question' => $question,'questions' => $questions, 'next_question_ids' => $this->next_question_ids, 'question_ids' => $question_ids]);
     }
 
     public function answer(Request $request, int $id)

@@ -35,4 +35,48 @@
             </div>
         </div>
     </form>
-@endsection
+    <!-- <div id="app"> -->
+  <!-- <span>@{{random()}}</span>
+  <div>@{{ next_question_ids }}</div>
+  <button v-on:click='spin()'></button>
+  <button v-on:click='stop()'></button> -->
+
+  <!-- <div id="app">
+    <router-view> -->
+      <!-- <example-component></example-component> -->
+      <!-- </router-view> -->
+    <!-- <router-link to='/ExampleComponent'>detail.vueに遷移</router-link> -->
+      
+    <!-- </div> -->
+<!-- </div> -->
+  <!-- //   new Vue({
+  //   el: '#app',
+  //   router: router,
+  //   data: {
+  //     text: @json($question->first_word) + 'とは' + @json($question->second_word),
+  //     timeoutId: undefined,
+  //     next_question_ids: @json($next_question_ids[0]['id']), 
+  //   },
+  //   methods:{
+  //     'random': function() {
+  //       const questions = @json($questions);
+  //       var random = Math.floor(Math.random() * questions.length);
+  //       console.log(questions[random]['id']);
+  //       this.text = questions[random]['first_word'] + "とは" + questions[random]['second_word'];
+  //       this.next_question_ids = questions[random]['id'];
+  //     },
+  //     spin: function() {
+  //       this.random();
+  //       this.timeoutId = setTimeout(()=>{
+  //       this.spin();
+  //       },100)
+  //   },
+  //   stop:function() {
+  //     clearTimeout(this.timeoutId);
+  //   }
+  // }
+  // })
+  // -->
+    
+    <!-- <script src=" {{ mix('js/app.js') }} "></script> -->
+    @endsection
